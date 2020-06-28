@@ -71,7 +71,7 @@
                         <input type="hidden" name="product_code" value="{{$productDetails->code}}">
                         <input type="hidden" id="price" name="product_price" value="{{$productDetails->price}}">
                         <h2>Product Name : {{$productDetails->name}}</h2>
-                        <h5 id="getPrice">Product Price : {{$productDetails->price}} vnđ</h5>
+                        <h5 id="getPrice">Product Price : {{number_format($productDetails->price)}} đ</h5>
 
                         <h4>Short Description:</h4>
                         <p>{!! $productDetails->description !!}</p>
@@ -96,22 +96,8 @@
                         </ul>
 
                         <div class="price-box-bar">
-                            <div class="cart-and-bay-btn">
+                            <div class="cart-and-bay-btn float-right">
                                 <button class="btn hvr-hover" data-fancybox-close="" type="submit" style="color:white;">Add to cart</button>
-                            </div>
-                        </div>
-
-                        <div class="add-to-btn">
-                            <div class="add-comp">
-                                <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
-                                <a class="btn hvr-hover" href="#"><i class="fas fa-sync-alt"></i> Add to Compare</a>
-                            </div>
-                            <div class="share-bar">
-                                <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                                <a class="btn hvr-hover" href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
-                                <a class="btn hvr-hover" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                                <a class="btn hvr-hover" href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
-                                <a class="btn hvr-hover" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -141,7 +127,7 @@
                                 </div>
                                 <div class="why-text">
                                     <h4>{{$featuredProduct->name}}</h4>
-                                    <h5> {{$featuredProduct->price}} vnđ</h5>
+                                    <h5> {{number_format($featuredProduct->price)}} đ</h5>
                                 </div>
                             </div>
                         </div>
@@ -153,91 +139,4 @@
     </div>
 </div>
 <!-- End Cart -->
-
-<!-- Start Instagram Feed  -->
-<div class="instagram-box">
-    <div class="main-instagram owl-carousel owl-theme">
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-01.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-02.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-03.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-04.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-05.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-06.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-07.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-08.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-09.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="ins-inner-box">
-                <img src="images/instagram-img-05.jpg" alt="" />
-                <div class="hov-in">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Instagram Feed  -->
 @endsection

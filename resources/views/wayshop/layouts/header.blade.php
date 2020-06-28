@@ -35,14 +35,6 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="custom-select-box">
-                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                    <option>$ USD</option>
-                </select>
-                </div>
-                <div class="right-phone-box">
-                    <p>Call US :- <a href="#"> +11 900 800 100</a></p>
-                </div>
                 <div class="our-link">
                     <ul>
                         <li><a href="{{url('/cart')}}"><i class="fa fa-cart-plus"></i> Cart</a></li>

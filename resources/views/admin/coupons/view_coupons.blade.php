@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'View Coupons')
+@section('title', 'Danh sách mã khuyến mãi')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
           <i class="fa fa-eye"></i>
        </div>
        <div class="header-title">
-          <h1>View Coupons</h1>
-          <small>Coupons</small>
+          <h1>Danh sách mã khuyến mãi</h1>
        </div>
     </section>
     @if (Session::has('flash_message_error'))
@@ -41,7 +40,7 @@
                 <div class="panel-heading">
                     <div class="btn-group" id="buttonexport">
                         <a href="#">
-                            <h4>View Coupons</h4>
+                            <h4>Danh sách mã khuyến mãi</h4>
                         </a>
                     </div>
                 </div>
@@ -49,7 +48,7 @@
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                     <div class="btn-group">
                         <div class="buttonexport" id="buttonlist">
-                            <a class="btn btn-add" href="{{url('/admin/add-coupon')}}"> <i class="fa fa-plus"></i> Add Coupon
+                            <a class="btn btn-add" href="{{url('/admin/add-coupon')}}"> <i class="fa fa-plus"></i> Thêm mã khuyến mãi
                             </a>
                         </div>
 
@@ -59,14 +58,14 @@
                         <table id="table_id" class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr class="info">
-                                    <th>Coupon ID</th>
-                                    <th>Coupon Code</th>
-                                    <th>Amount</th>
-                                    <th>Amount Type</th>
-                                    <th>Expity Date</th>
-                                    <th>Created Date</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>ID</th>
+                                    <th>Mã</th>
+                                    <th>Số tiền</th>
+                                    <th>Loại khuyến mãi</th>
+                                    <th>Ngày hết hạn</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,7 +75,7 @@
                                         <td>{{$coupon->coupon_code}}</td>
                                         <td>
                                             {{$coupon->amount}}
-                                            @if ($coupon->amount_type == "Percentage") % @else vnđ @endif
+                                            @if ($coupon->amount_type == "Percentage") % @else đ @endif
                                         </td>
                                         <td>{{$coupon->amount_type}}</td>
                                         <td>{{$coupon->expiry_date}}</td>
@@ -87,8 +86,8 @@
                                             <div id="myElen" style="display:none;" class="alert alert-success">Status Enabled</div>
                                         </td>
                                         <td>
-                                            <a href="{{url('/admin/edit-coupon/' . $coupon->id )}}" type="button" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="{{url('/admin/delete-coupon/' . $coupon->id )}}" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                            <a href="{{url('/admin/edit-coupon/' . $coupon->id )}}" type="button" title="Sửa mã khuyến mãi" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <a href="{{url('/admin/delete-coupon/' . $coupon->id )}}" type="button" title="Xóa mã khuyến mãi" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach

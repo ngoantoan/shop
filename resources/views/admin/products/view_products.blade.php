@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'View Products')
+@section('title', 'Danh sách sản phẩm')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
           <i class="fa fa-users"></i>
        </div>
        <div class="header-title">
-          <h1>View Products</h1>
-          <small>Products List</small>
+          <h1>Danh sách sản phẩm</h1>
        </div>
     </section>
     @if (Session::has('flash_message_error'))
@@ -41,7 +40,7 @@
                 <div class="panel-heading">
                     <div class="btn-group" id="buttonexport">
                         <a href="#">
-                            <h4>View Products</h4>
+                            <h4>Danh sách sản phẩm</h4>
                         </a>
                     </div>
                 </div>
@@ -49,7 +48,7 @@
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                     <div class="btn-group">
                         <div class="buttonexport" id="buttonlist">
-                            <a class="btn btn-add" href="{{url('/admin/add-product')}}"> <i class="fa fa-plus"></i> Add Product
+                            <a class="btn btn-add" href="{{url('/admin/add-product')}}"> <i class="fa fa-plus"></i> Thêm sản phẩm
                             </a>
                         </div>
 
@@ -60,15 +59,15 @@
                             <thead>
                                 <tr class="info">
                                     <th>ID</th>
-                                    <th>Product Name</th>
-                                    <th>Category ID</th>
-                                    <th>Product Code</th>
-                                    <th>Product Color</th>
-                                    <th>Image</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                    <th>Featured Products</th>
-                                    <th>Action</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>ID danh mục</th>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Màu sản phẩm</th>
+                                    <th>Ảnh</th>
+                                    <th>Giá</th>
+                                    <th>Trạng thái</th>
+                                    <th>Sản phẩm nổi bật</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>

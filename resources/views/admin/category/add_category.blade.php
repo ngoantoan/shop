@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Add Category')
+@section('title', 'Thêm danh mục sản phẩm')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
            <i class="fa fa-product-hunt"></i>
         </div>
         <div class="header-title">
-           <h1>Add Category</h1>
-           <small>Add Category</small>
+           <h1>Thêm danh mục sản phẩm</h1>
         </div>
         </section>
         @if (Session::has('flash_message_error'))
@@ -38,20 +37,20 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonlist">
                         <a class="btn btn-add " href="{{url('/admin/view-categories')}}">
-                        <i class="fa fa-eye"></i>  View Categories </a>
+                        <i class="fa fa-eye"></i>  Danh sách danh mục sản phẩm </a>
                         </div>
                     </div>
                     <div class="panel-body">
                         <form class="col-sm-6" action="{{url('/admin/add-category')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Category Name" name="category_name" id="category_name" required>
+                                <label>Tên danh mục</label>
+                                <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="category_name" id="category_name" required>
                             </div>
                             <div class="form-group">
-                                <label>Parent Category</label>
+                                <label>Danh mục cha</label>
                                 <select name="parent_id" id="parent_id" class="form-control">
-                                    <option value="0">Parent Category</option>
+                                    <option value="0">Danh mục cha</option>
                                     @foreach ($levels as $level)
                                         <option value="{{$level->id}}">{{$level->name}}</option>
                                     @endforeach
@@ -62,11 +61,11 @@
                                 <input type="text" class="form-control" placeholder="Url" name="category_url" id="category_url" required>
                             </div>
                             <div class="form-group">
-                                <label>Category Description</label>
+                                <label>Mô tả</label>
                                 <textarea name="category_description" id="category_description" class="form-control"></textarea>
                             </div>
                             <div class="reset-button">
-                                <input type="submit" class="btn btn-success" value="Add Category">
+                                <input type="submit" class="btn btn-success" value="Thêm danh mục">
                             </div>
                         </form>
                     </div>

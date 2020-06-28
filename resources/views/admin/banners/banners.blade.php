@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Banners')
+@section('title', 'Danh sách Banner')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
           <i class="fa fa-eye"></i>
        </div>
        <div class="header-title">
-          <h1>Banners</h1>
-          <small>Banners</small>
+          <h1>Danh sách Banner</h1>
        </div>
     </section>
     @if (Session::has('flash_message_error'))
@@ -41,7 +40,7 @@
                 <div class="panel-heading">
                     <div class="btn-group" id="buttonexport">
                         <a href="#">
-                            <h4>View Banners</h4>
+                            <h4>Danh sách Banner</h4>
                         </a>
                     </div>
                 </div>
@@ -60,11 +59,11 @@
                             <thead>
                                 <tr class="info">
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Sort Order</th>
-                                    <th>Image</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Tên</th>
+                                    <th>Sắp xếp</th>
+                                    <th>Ảnh</th>
+                                    <th>Trang thái</th>
+                                    <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -25,7 +25,7 @@
         <!-- Content Wrapper -->
         <div class="login-wrapper">
             <div class="back-link">
-                <a href="index.html" class="btn btn-add">Back to Dashboard</a>
+                <a href="{{url('/')}}" class="btn btn-add">Trở về trang chủ</a>
             </div>
             <div class="container-center">
                 @if (Session::has('flash_message_error'))
@@ -53,8 +53,8 @@
                                 <i class="pe-7s-unlock"></i>
                             </div>
                             <div class="header-title">
-                                <h3>Login</h3>
-                                <small><strong>Please enter your credentials to login.</strong></small>
+                                <h3>Đăng nhập</h3>
+                                <small><strong>Nhập thông tin của bạn để đăng nhập.</strong></small>
                             </div>
                         </div>
                     </div>
@@ -62,18 +62,15 @@
                         <form action="{{url('admin')}}" id="loginForm" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label class="control-label" for="username">Username</label>
+                                <label class="control-label" for="username">Email</label>
                                 <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
-                                <span class="help-block small">Your unique username to app</span>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="password">Password</label>
+                                <label class="control-label" for="password">Mật khẩu</label>
                                 <input type="password" title="Please enter your password" placeholder="******" required="" value="" name="password" id="password" class="form-control">
-                                <span class="help-block small">Your strong password</span>
                             </div>
                             <div>
-                                <button class="btn btn-add">Login</button>
-                                <a class="btn btn-warning" href="register.html">Register</a>
+                                <button class="btn btn-add">Đăng nhập</button>
                             </div>
                         </form>
                         </div>

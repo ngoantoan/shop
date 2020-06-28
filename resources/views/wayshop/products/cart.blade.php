@@ -64,7 +64,7 @@
                                         <p>{{$cart->product_code}} | {{$cart->size}}</p>
                                     </td>
                                     <td class="price-pr">
-                                        <p>{{$cart->price}} vnđ</p>
+                                        <p>{{$cart->price}} đ</p>
                                     </td>
                                     <td class="quantity-box">
                                         @if ($cart->quantity>1)
@@ -74,7 +74,7 @@
                                         <a href="{{url('/cart/update-quantity/'.$cart->id.'/1')}}" style="font-size: 25px;">+</a>
                                     </td>
                                     <td class="total-pr">
-                                        <p>{{$cart->price * $cart->quantity}} vnđ</p>
+                                        <p>{{$cart->price * $cart->quantity}} đ</p>
                                     </td>
                                     <td class="remove-pr">
                                         <a href="{{url('/cart/delete-product/'. $cart->id)}}">
@@ -112,23 +112,23 @@
                     @if (!empty(Session::get('couponAmount')))
                         <div class="d-flex">
                             <h4>Sub Total</h4>
-                            <div class="ml-auto font-weight-bold"> <?php echo $total_amount; ?> vnđ</div>
+                            <div class="ml-auto font-weight-bold"> <?php echo $total_amount; ?> đ</div>
                         </div>
                         <hr class="my-1">
                         <div class="d-flex">
                             <h4>Coupon Discount</h4>
-                            <div class="ml-auto font-weight-bold"> <?php echo Session::get('couponAmount'); ?> vnđ</div>
+                            <div class="ml-auto font-weight-bold"> <?php echo Session::get('couponAmount'); ?> đ</div>
                         </div>
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> <?php echo $total_amount - Session::get('couponAmount');?> vnđ</div>
+                            <div class="ml-auto h5"> <?php echo $total_amount - Session::get('couponAmount');?> đ</div>
                         </div>
                         <hr>
                     @else
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> <?php echo $total_amount; ?> vnđ</div>
+                            <div class="ml-auto h5"> <?php echo $total_amount; ?> đ</div>
                         </div>
                     @endif
                 </div>

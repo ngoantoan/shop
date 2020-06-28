@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Edit Product')
+@section('title', 'Sửa sản phẩm')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
            <i class="fa fa-product-hunt"></i>
         </div>
         <div class="header-title">
-           <h1>Edit Product</h1>
-           <small>Edit Products</small>
+           <h1>Sửa sản phẩm</h1>
         </div>
         </section>
         @if (Session::has('flash_message_error'))
@@ -38,40 +37,40 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonlist">
                         <a class="btn btn-add " href="{{url('/admin/view-products')}}">
-                        <i class="fa fa-eye"></i>  View Products </a>
+                        <i class="fa fa-eye"></i>  Danh sách sản phẩm </a>
                         </div>
                     </div>
                     <div class="panel-body">
                         <form class="col-sm-6" action="{{url('/admin/edit-product/'. $productDetails->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label>Under Category</label>
+                                <label>Danh mục</label>
                                 <select name="category_id" id="category_id" class="form-control">
                                     <?php echo $categories_dropdown; ?>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Product Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Product Name" name="product_name" id="product_name" value="{{$productDetails->name}}" required>
+                                <label>Tên sản phẩm</label>
+                                <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="product_name" id="product_name" value="{{$productDetails->name}}" required>
                             </div>
                             <div class="form-group">
-                                <label>Product Code</label>
-                                <input type="text" class="form-control" placeholder="Enter Product Code" name="product_code" id="product_code" value="{{$productDetails->code}}" required>
+                                <label>Mã sản phẩm</label>
+                                <input type="text" class="form-control" placeholder="Nhập mã sản phẩm" name="product_code" id="product_code" value="{{$productDetails->code}}" required>
                             </div>
                             <div class="form-group">
-                                <label>Product Color</label>
-                                <input type="text" class="form-control" placeholder="Enter Product Color" name="product_color" id="product_color" value="{{$productDetails->color}}" required>
+                                <label>Màu sản phẩm</label>
+                                <input type="text" class="form-control" placeholder="Nhập màu sản phẩm" name="product_color" id="product_color" value="{{$productDetails->color}}" required>
                             </div>
                             <div class="form-group">
-                                <label>Product Description</label>
+                                <label>Mô tả</label>
                                 <textarea name="product_description" id="product_description" class="form-control">{{$productDetails->description}}</textarea>
                             </div>
                             <div class="form-group">
-                                <label>Product Price</label>
-                                <input type="text" class="form-control" placeholder="Enter Product Price" name="product_price" id="product_price" value="{{$productDetails->price}}" required>
+                                <label>Giá</label>
+                                <input type="text" class="form-control" placeholder="Nhập giá" name="product_price" id="product_price" value="{{$productDetails->price}}" required>
                             </div>
                             <div class="form-group">
-                                <label>Picture upload</label>
+                                <label>Ảnh</label>
                                 <input type="file" name="image">
                                 <input type="hidden" name="current_image" value="{{$productDetails->image}}">
                                 @if (!empty($productDetails->image))
@@ -79,7 +78,7 @@
                                 @endif
                             </div>
                             <div class="reset-button">
-                                <input type="submit" class="btn btn-success" value="Edit Product">
+                                <input type="submit" class="btn btn-success" value="Sửa sản phẩm">
                             </div>
                         </form>
                     </div>

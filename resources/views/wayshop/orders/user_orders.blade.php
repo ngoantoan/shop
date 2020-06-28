@@ -29,7 +29,7 @@
                                         @endforeach
                                     </td>
                                     <td>{{$order->payment_method}}</td>
-                                    <td>{{$order->grand_total}} vnđ</td>
+                                    <td>{{$order->grand_total}} đ</td>
                                     <td>{{$order->created_at}}</td>
                                     <td>View Detail</td>
                                 </tr>

@@ -19,52 +19,49 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('admin/add-banner')}}">Add Banner</a></li>
-                    <li><a href="{{url('admin/banners')}}">View Banners</a></li>
+                    <li><a href="{{url('admin/add-banner')}}">Thêm Banner</a></li>
+                    <li><a href="{{url('admin/banners')}}">Danh sách Banner</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-list"></i><span>Categories</span>
+                    <i class="fa fa-list"></i><span>Danh mục sản phẩm</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('admin/add-category')}}">Add Category</a></li>
-                    <li><a href="{{url('admin/view-categories')}}">View Category</a></li>
+                    <li><a href="{{url('admin/add-category')}}">Thêm danh mục</a></li>
+                    <li><a href="{{url('admin/view-categories')}}">Danh sách danh mục</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-product-hunt"></i><span>Products</span>
+                    <i class="fa fa-product-hunt"></i><span>Sản phẩm</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('admin/add-product')}}">Add Product</a></li>
-                    <li><a href="{{url('admin/view-products')}}">View Products</a></li>
+                    <li><a href="{{url('admin/add-product')}}">Thêm sản phẩm</a></li>
+                    <li><a href="{{url('admin/view-products')}}">Danh sách sản phẩm</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-gift"></i><span>Coupons</span>
+                    <i class="fa fa-gift"></i><span>Mã phiến mãi</span>
                     <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('admin/add-coupon')}}">Add Coupon</a></li>
-                    <li><a href="{{url('admin/view-coupons')}}">View Coupons</a></li>
+                    <li><a href="{{url('admin/add-coupon')}}">Thêm mã phiến mãi</a></li>
+                    <li><a href="{{url('admin/view-coupons')}}">Danh sách mã phiến mãi</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="{{url('admin/orders')}}">
-                    <i class="pe-7s-cart"></i><span>Orders</span>
-                    <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+                    <i class="pe-7s-cart"></i><span>Đơn hàng</span>
                 </a>
             </li>
         </ul>

@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Products Attributes')
+@section('title', 'Thêm thuộc tính sản phẩm')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
            <i class="fa fa-product-hunt"></i>
         </div>
         <div class="header-title">
-           <h1>Add Products Attributes</h1>
-           <small>Add Products Attributes</small>
+           <h1>Thêm thuộc tính sản phẩm</h1>
         </div>
         </section>
         @if (Session::has('flash_message_error'))
@@ -38,20 +37,20 @@
                         <div class="panel-heading">
                             <div class="btn-group" id="buttonlist">
                             <a class="btn btn-add " href="{{url('/admin/view-products')}}">
-                            <i class="fa fa-eye"></i>  View Products </a>
+                            <i class="fa fa-eye"></i>  Danh sách sản phẩm </a>
                             </div>
                         </div>
                         <div class="panel-body">
                             <form class="col-sm-6" action="{{url('/admin/add-attributes/'. $productDetails->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Product Name</label> {{$productDetails->name}}
+                                    <label>Tên sản phẩm : </label> {{$productDetails->name}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Code</label> {{$productDetails->code}}
+                                    <label>Mã sản phẩm : </label> {{$productDetails->code}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Color</label> {{$productDetails->color}}
+                                    <label>Màu sản phẩm : </label> {{$productDetails->color}}
                                 </div>
                                 <div class="form-group">
                                     <div class="field_wrapper">
@@ -65,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="reset-button">
-                                    <input type="submit" class="btn btn-success" value="Add Attributes">
+                                    <input type="submit" class="btn btn-success" value="Thêm thuộc tính">
                                 </div>
                             </form>
                         </div>
@@ -82,7 +81,7 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonexport">
                             <a href="#">
-                                <h4>View Attributes</h4>
+                                <h4>Danh sách thuộc tính</h4>
                             </a>
                         </div>
                     </div>

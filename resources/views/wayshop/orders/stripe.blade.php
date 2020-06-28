@@ -24,7 +24,7 @@
                 <div class="col-lg-6">
                     <div align="center">
                         <h2>YOUR COD ORDER HAS BEEN PLACED</h2>
-                        <P>Your Order Number is {{Session::get('order_id')}} and total payable about is {{Session::get('grand_total')}} vnđ</P>
+                        <P>Your Order Number is {{Session::get('order_id')}} and total payable about is {{Session::get('grand_total')}} đ</P>
                         <b>Please make payment by entering your credit or debit card</b>
                     </div>
                 </div>

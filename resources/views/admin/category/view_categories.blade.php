@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'View Categories')
+@section('title', 'Danh sách danh mục')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
           <i class="fa fa-eye"></i>
        </div>
        <div class="header-title">
-          <h1>View Categories</h1>
-          <small>Categories List</small>
+          <h1>Danh sách danh mục sản phẩm</h1>
        </div>
     </section>
     @if (Session::has('flash_message_error'))
@@ -41,7 +40,7 @@
                 <div class="panel-heading">
                     <div class="btn-group" id="buttonexport">
                         <a href="#">
-                            <h4>View Categories</h4>
+                            <h4>Danh sách danh mục sản phẩm</h4>
                         </a>
                     </div>
                 </div>
@@ -49,7 +48,7 @@
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                     <div class="btn-group">
                         <div class="buttonexport" id="buttonlist">
-                            <a class="btn btn-add" href="{{url('/admin/add-category')}}"> <i class="fa fa-plus"></i> Add Category
+                            <a class="btn btn-add" href="{{url('/admin/add-category')}}"> <i class="fa fa-plus"></i> Thêm danh mục
                             </a>
                         </div>
 
@@ -60,11 +59,11 @@
                             <thead>
                                 <tr class="info">
                                     <th>ID</th>
-                                    <th>Category Name</th>
-                                    <th>Parent ID</th>
+                                    <th>Tên danh mục</th>
+                                    <th>ID danh mục cha</th>
                                     <th>Url</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Trạng thái</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,8 +79,8 @@
                                             <div id="myElen" style="display:none;" class="alert alert-success">Status Enabled</div>
                                         </td>
                                         <td>
-                                            <a href="{{url('/admin/edit-category/' . $category->id )}}" type="button" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="{{url('/admin/delete-category/' . $category->id )}}" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                            <a href="{{url('/admin/edit-category/' . $category->id )}}" title="Sửa danh mục" type="button" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <a href="{{url('/admin/delete-category/' . $category->id )}}" title="Xóa danh mục" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach

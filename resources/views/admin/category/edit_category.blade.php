@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Edit Category')
+@section('title', 'Sửa danh mục')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
            <i class="fa fa-pencil"></i>
         </div>
         <div class="header-title">
-           <h1>Edit Category</h1>
-           <small>Edit Category</small>
+           <h1>Sửa danh mục</h1>
         </div>
         </section>
         @if (Session::has('flash_message_error'))
@@ -38,20 +37,20 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonlist">
                         <a class="btn btn-add " href="{{url('/admin/view-categories')}}">
-                        <i class="fa fa-eye"></i>  View Categories </a>
+                        <i class="fa fa-eye"></i>  Danh sách danh mục sản phẩm </a>
                         </div>
                     </div>
                     <div class="panel-body">
                         <form class="col-sm-6" action="{{url('/admin/edit-category/'. $categoryDetails->id)}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label>Category Name</label>
+                                <label>Tên danh mục</label>
                                 <input type="text" class="form-control" name="category_name" id="category_name" value="{{$categoryDetails->name}}" required>
                             </div>
                             <div class="form-group">
-                                <label>Parent Category</label>
+                                <label>Danh mục cha</label>
                                 <select name="parent_id" id="parent_id" class="form-control">
-                                    <option value="0">Parent Category</option>
+                                    <option value="0">Danh mục cha</option>
                                     @foreach ($levels as $val)
                                         <option value="{{$val->id}}" @if ($val->id == $categoryDetails->parent_id) selected  @endif>{{$val->name}}</option>
                                     @endforeach
@@ -62,11 +61,11 @@
                                 <input type="text" class="form-control" name="category_url" id="category_url" value="{{$categoryDetails->url}}" required>
                             </div>
                             <div class="form-group">
-                                <label>Category Description</label>
+                                <label>Mô tả</label>
                                 <textarea name="category_description" id="category_description" class="form-control">{{$categoryDetails->description}}</textarea>
                             </div>
                             <div class="reset-button">
-                                <input type="submit" class="btn btn-success" value="Edit Category">
+                                <input type="submit" class="btn btn-success" value="Sửa danh mục">
                             </div>
                         </form>
                     </div>

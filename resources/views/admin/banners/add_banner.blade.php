@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Add Banner')
+@section('title', 'Thêm Banner')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
            <i class="fa fa-product-hunt"></i>
         </div>
         <div class="header-title">
-           <h1>Add Banner</h1>
-           <small>Add Banner</small>
+           <h1>Thêm Banner</h1>
         </div>
         </section>
         @if (Session::has('flash_message_error'))
@@ -38,22 +37,22 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonlist">
                         <a class="btn btn-add " href="{{url('/admin/banners')}}">
-                        <i class="fa fa-eye"></i>  Banners </a>
+                        <i class="fa fa-eye"></i>  Danh sách banner </a>
                         </div>
                     </div>
                     <div class="panel-body">
                         <form class="col-sm-6" action="{{url('/admin/add-banner')}}" method="POST"  enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Name" name="banner_name" id="banner_name" required>
+                                <label>Tên</label>
+                                <input type="text" class="form-control" placeholder="Nhập tên" name="banner_name" id="banner_name" required>
                             </div>
                             <div class="form-group">
                                 <label>Text Style</label>
                                 <input type="text" class="form-control" placeholder="Text Style" name="text_style" id="text_style" required>
                             </div>
                             <div class="form-group">
-                                <label>Content</label>
+                                <label>Nội dung</label>
                                 <textarea name="banner_content" id="banner_content" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
@@ -61,15 +60,15 @@
                                 <input type="text" class="form-control" placeholder="Link" name="banner_link" id="banner_link" required>
                             </div>
                             <div class="form-group">
-                                <label>Sort Order</label>
-                                <input type="text" class="form-control" placeholder="Sort Order" name="sort_order" id="sort_order" required>
+                                <label>Sắp xếp</label>
+                                <input type="text" class="form-control" placeholder="Sắp xếp" name="sort_order" id="sort_order" required>
                             </div>
                             <div class="form-group">
-                                <label>Banner Image</label>
+                                <label>Ảnh Banner</label>
                                 <input type="file" name="image">
                             </div>
                             <div class="reset-button">
-                                <input type="submit" class="btn btn-success" value="Add Banner">
+                                <input type="submit" class="btn btn-success" value="Thêm banner">
                             </div>
                         </form>
                     </div>

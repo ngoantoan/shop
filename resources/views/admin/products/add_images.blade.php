@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Products Attributes')
+@section('title', 'Thêm ảnh cho sản phẩm')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
            <i class="fa fa-product-hunt"></i>
         </div>
         <div class="header-title">
-           <h1>Add Products Attributes</h1>
-           <small>Add Products Images</small>
+           <h1>Thêm ảnh cho sản phẩm</h1>
         </div>
         </section>
         @if (Session::has('flash_message_error'))
@@ -38,27 +37,27 @@
                         <div class="panel-heading">
                             <div class="btn-group" id="buttonlist">
                             <a class="btn btn-add " href="{{url('/admin/view-products')}}">
-                            <i class="fa fa-eye"></i>  View Products </a>
+                            <i class="fa fa-eye"></i>  Danh sách sản phẩm </a>
                             </div>
                         </div>
                         <div class="panel-body">
                             <form class="col-sm-6" action="{{url('/admin/add-images/'. $productDetails->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Product Name</label> {{$productDetails->name}}
+                                    <label>Tên sản phẩm : </label> {{$productDetails->name}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Code</label> {{$productDetails->code}}
+                                    <label>Mã sản phẩm :</label> {{$productDetails->code}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Color</label> {{$productDetails->color}}
+                                    <label>Màu sản phẩm : </label> {{$productDetails->color}}
                                 </div>
                                 <div class="form-group">
-                                    <label>Image</label>
+                                    <label>Ảnh </label>
                                     <input type="file" name="image[]" id="image" multiple="multiple">
                                 </div>
                                 <div class="reset-button">
-                                    <input type="submit" class="btn btn-success" value="Add Image">
+                                    <input type="submit" class="btn btn-success" value="Thêm ảnh">
                                 </div>
                             </form>
                         </div>
@@ -73,7 +72,7 @@
                         <div class="panel-heading">
                             <div class="btn-group" id="buttonexport">
                                 <a href="#">
-                                    <h4>View Attributes</h4>
+                                    <h4>Danh sách ảnh</h4>
                                 </a>
                             </div>
                         </div>
@@ -85,9 +84,9 @@
                                         <thead>
                                             <tr class="info">
                                                 <th>ID</th>
-                                                <th>Product ID</th>
-                                                <th>Image</th>
-                                                <th>Action</th>
+                                                <th>ID sản phẩm</th>
+                                                <th>Ảnh</th>
+                                                <th>Hành động</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -98,7 +97,7 @@
                                                     <td><img src="{{url('uploads/products/'.$productImage->image)}}" style="width: 80px;"></td>
                                                     <td class="center">
                                                         <div class="btn-group">
-                                                            <a href="{{url('/admin/delete-alt-image/'. $productImage->id)}}" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                                            <a href="{{url('/admin/delete-alt-image/'. $productImage->id)}}" title="Xóa ảnh" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                                         </div>
                                                     </td>
                                                 </tr>

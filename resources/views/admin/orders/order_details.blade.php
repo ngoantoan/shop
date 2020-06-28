@@ -62,7 +62,7 @@
                                     </tr>
                                     <tr>
                                         <td class="taskDesc">Order Total</td>
-                                        <td class="taskStatus"> {{$orderDetails->grand_total}} vnđ</td>
+                                        <td class="taskStatus"> {{$orderDetails->grand_total}} đ</td>
                                     </tr>
                                     <tr>
                                         <td class="taskDesc">Order Charges</td>
@@ -110,7 +110,7 @@
                                     </tr>
                                     <tr>
                                         <td class="taskDesc">City</td>
-                                        <td class="taskStatus"> {{$orderDetails->city}} vnđ</td>
+                                        <td class="taskStatus"> {{$orderDetails->city}} đ</td>
                                     </tr>
                                     <tr>
                                         <td class="taskDesc">District</td>
@@ -219,7 +219,7 @@
                                     </tr>
                                     <tr>
                                         <td class="taskDesc">City</td>
-                                        <td class="taskStatus"> {{$orderDetails->city}} vnđ</td>
+                                        <td class="taskStatus"> {{$orderDetails->city}} đ</td>
                                     </tr>
                                     <tr>
                                         <td class="taskDesc">District</td>

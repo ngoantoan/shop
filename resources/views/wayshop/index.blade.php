@@ -31,15 +31,9 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                     <div class="product-categori">
-                        <div class="search-product">
-                            <form action="#">
-                                <input class="form-control" placeholder="Search here..." type="text">
-                                <button type="submit"> <i class="fa fa-search"></i> </button>
-                            </form>
-                        </div>
                         <div class="filter-sidebar-left">
                             <div class="title-left">
-                                <h3>Categories</h3>
+                                <h3>DANH MỤC</h3>
                             </div>
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                 @foreach ($categories as $category)
@@ -60,7 +54,7 @@
                         </div>
                         <div class="filter-price-left">
                             <div class="title-left">
-                                <h3>Price</h3>
+                                <h3>GIÁ</h3>
                             </div>
                             <div class="price-box-slider">
                                 <div id="slider-range"></div>
@@ -70,93 +64,10 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="filter-brand-left">
-                            <div class="title-left">
-                                <h3>Brand</h3>
-                            </div>
-                            <div class="brand-box">
-                                <ul>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios1" value="Yes" type="radio">
-                                            <label for="Radios1"> Supreme </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios2" value="No" type="radio">
-                                            <label for="Radios2"> A Bathing Ape </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios3" value="declater" type="radio">
-                                            <label for="Radios3"> The Hundreds </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios4" value="declater" type="radio">
-                                            <label for="Radios4"> Alife </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios5" value="declater" type="radio">
-                                            <label for="Radios5"> Neighborhood </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios6" value="declater" type="radio">
-                                            <label for="Radios6"> CLOT </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios7" value="declater" type="radio">
-                                            <label for="Radios7"> Acapulco Gold </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios8" value="declater" type="radio">
-                                            <label for="Radios8"> UNDFTD </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios9" value="declater" type="radio">
-                                            <label for="Radios9"> Mighty Healthy </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="radio radio-danger">
-                                            <input name="survey" id="Radios10" value="declater" type="radio">
-                                            <label for="Radios10"> Fiberops </label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
                     <div class="right-product-box">
-                        <div class="product-item-filter row">
-                            <div class="col-12 col-sm-8 text-center text-sm-left">
-
-                            </div>
-                            <div class="col-12 col-sm-4 text-center text-sm-right">
-                                <ul class="nav nav-tabs ml-auto">
-                                    <li>
-                                        <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
                         <div class="row product-categorie-box">
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
@@ -165,9 +76,6 @@
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                 <div class="products-single fix">
                                                     <div class="box-img-hover">
-                                                        <div class="type-lb">
-                                                            <p class="sale">Sale</p>
-                                                        </div>
                                                         <img src="{{asset('uploads/products/'. $product->image)}}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
@@ -180,7 +88,7 @@
                                                     </div>
                                                     <div class="why-text">
                                                         <h4>{{$product->description}}</h4>
-                                                        <h5 style="color:red;">{{$product->price}} vnđ</h5>
+                                                        <h5 style="color:red;">{{number_format($product->price)}} đ</h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,92 +176,4 @@
         </div>
     </div>
     <!-- End Blog  -->
-
-
-    <!-- Start Instagram Feed  -->
-    <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-01.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-02.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-03.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-04.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-05.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-06.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-07.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-08.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-09.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{asset('front_assets/images/instagram-img-05.jpg')}}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Instagram Feed  -->
 @endsection

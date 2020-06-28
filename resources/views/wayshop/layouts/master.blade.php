@@ -16,7 +16,7 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('front_assets/images/favicon.ico')}}" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
@@ -40,12 +40,13 @@
 
     @include('wayshop.layouts.header')
     @yield('content')
-    @include('wayshop.layouts.footer');
+    @include('wayshop.layouts.footer')
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
     <script src="{{asset('front_assets/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('front_assets/js/jquery-ui.js')}}"></script>
     <script src="{{asset('front_assets/js/popper.min.js')}}"></script>
     <script src="{{asset('front_assets/js/bootstrap.min.js')}}"></script>
     <!-- ALL PLUGINS -->
@@ -74,7 +75,7 @@
                     data: {idSize: idSize},
                     success: function(resp) {
                         var arr = resp.split('#');
-                        $('#getPrice').html('Product Price : ' + arr[0] + 'vnđ');
+                        $('#getPrice').html('Product Price : ' + arr[0].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' đ');
                         $('#price').val(arr[0]);
                     },
                     error: function() {

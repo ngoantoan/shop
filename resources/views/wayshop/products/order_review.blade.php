@@ -119,13 +119,13 @@
                                         <p>{{$cart->product_code}} | {{$cart->size}}</p>
                                     </td>
                                     <td class="price-pr">
-                                        <p>{{$cart->price}} vnđ</p>
+                                        <p>{{$cart->price}} đ</p>
                                     </td>
                                     <td class="quantity-box">
                                         {{$cart->quantity}}
                                     </td>
                                     <td class="total-pr">
-                                        <p>{{$cart->price * $cart->quantity}} vnđ</p>
+                                        <p>{{$cart->price * $cart->quantity}} đ</p>
                                     </td>
                                 </tr>
                                 <?php $total_amount += ($cart->price * $cart->quantity); ?>
@@ -142,12 +142,12 @@
                         <h3>Your Total</h3>
                         <div class="d-flex">
                             <h4>Cart Sub Total</h4>
-                            <div class="ml-auto font-weight-bold"> {{$total_amount}} vnđ</div>
+                            <div class="ml-auto font-weight-bold"> {{$total_amount}} đ</div>
                         </div>
                         <div class="d-flex">
                             <h4>Shipping Cost (+)</h4>
                             <div class="ml-auto font-weight-bold">
-                                0 vnđ
+                                0 đ
                             </div>
                         </div>
                         <hr class="my-1">
@@ -155,16 +155,16 @@
                             <h4>Coupon Discount (-)</h4>
                             <div class="ml-auto font-weight-bold">
                                 @if (!empty(Session::get('couponAmount')))
-                                    {{Session::get('couponAmount')}} vnđ
+                                    {{Session::get('couponAmount')}} đ
                                 @else
-                                    0 vnđ
+                                    0 đ
                                 @endif
                             </div>
                         </div>
                         <hr>
                         <div class="d-flex gr-total">
                             <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> {{$grand_total = $total_amount - Session::get('couponAmount')}} vnđ </div>
+                            <div class="ml-auto h5"> {{$grand_total = $total_amount - Session::get('couponAmount')}} đ </div>
                         </div>
                         <hr>
                     </div>

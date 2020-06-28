@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'View Orders')
+@section('title', 'Danh sách đơn hàng')
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -8,8 +8,7 @@
           <i class="fa fa-eye"></i>
        </div>
        <div class="header-title">
-          <h1>View Orders</h1>
-          <small>Orders</small>
+          <h1>Danh sách đơn hàng</h1>
        </div>
     </section>
 
@@ -24,33 +23,31 @@
                 <div class="panel-heading">
                     <div class="btn-group" id="buttonexport">
                         <a href="#">
-                            <h4>View Orders</h4>
+                            <h4>Danh sách đơn hàng</h4>
                         </a>
                     </div>
                 </div>
                 <div class="panel-body">
-                <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
-                    <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                     <div class="table-responsive">
                         <table id="table_id" class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr class="info">
-                                    <th>Order ID</th>
-                                    <th>Order Date</th>
-                                    <th>Customer Name</th>
-                                    <th>Customer Email</th>
-                                    <th>Ordered Product</th>
-                                    <th>Order Amount</th>
-                                    <th>Order Status</th>
-                                    <th>Payment Method</th>
-                                    <th>Actions</th>
+                                    <th>ID</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Mail</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Phương thức thanh toán</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order)
                                     <tr>
                                         <td>{{$order->id}}</td>
-                                        <td>{{$order->created_at}}</td>
+                                        <td>{{$order->created_at->format('d/m/Y')}}</td>
                                         <td>{{$order->name}}</td>
                                         <td>{{$order->user_email}}</td>
                                         <td>
@@ -63,7 +60,7 @@
                                         <td>{{$order->order_status}}</td>
                                         <td>{{$order->payment_method}}</td>
                                         <td>
-                                            <a target="_blank" href="{{url('/admin/order/' . $order->id )}}" type="button" class="btn btn-primary btn-sm">View Order Details</a>
+                                            <a target="_blank" href="{{url('/admin/order/' . $order->id )}}" type="button" class="btn btn-primary btn-sm">Chi tiết</a>
                                         </td>
                                     </tr>
                                 @endforeach

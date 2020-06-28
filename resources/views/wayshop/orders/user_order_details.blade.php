@@ -22,7 +22,7 @@
                                     <td>{{$pro->product_code}}</td>
                                     <td>{{$pro->product_name}}</td>
                                     <td>{{$pro->product_size}}</td>
-                                    <td>{{$pro->product_price}} vnđ</td>
+                                    <td>{{$pro->product_price}} đ</td>
                                     <td>{{$pro->product_qty}}</td>
                                     <td>{{$orderDetails->order_status}}</td>
                                 </tr>

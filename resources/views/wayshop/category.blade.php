@@ -13,9 +13,9 @@
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                 @foreach ($categories as $category)
                                     <div class="list-group-collapse sub-men">
-                                        <a class="list-group-item list-group-item-action" href="#sub{{$category->id}}" data-toggle="collapse" aria-expanded="true" aria-controls="sub{{$category->id}}">
-                                            {{$category->name}} <small class="text-muted">(100)</small>
-                                        </a>
+                                        <div class="list-group-item list-group-item-action" href="#sub{{$category->id}}" data-toggle="collapse" aria-expanded="true" aria-controls="sub{{$category->id}}">
+                                            <a href="{{url('/categories/'.$category->id)}}">{{$category->name}}</a> <small class="text-muted">(100)</small>
+                                        </div>
                                         <div class="collapse" id="sub{{$category->id}}" data-parent="#list-group-men">
                                             <div class="list-group">
                                                 @foreach ($category->categories as $subcat)

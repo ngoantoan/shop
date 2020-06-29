@@ -78,7 +78,7 @@
                         <ul>
                             <li>
                                 <div class="form-group size-st">
-                                    <label class="size-label">Size</label>
+                                    <label class="size-label">Size <small class="errorSize" style="color: red;"></small></label>
                                     <select id="selSize" name="size" class="selectpicker show-tick form-control">
                                         <option value="0">Size</option>
                                         @foreach ($productDetails['attributes'] as $sizes)
@@ -89,15 +89,15 @@
                             </li>
                             <li>
                                 <div class="form-group quantity-box">
-                                    <label class="control-label">Quantity</label>
-                                    <input class="form-control" name="quantity" value="0" min="0" max="20" type="number">
+                                    <label class="control-label">Quantity <small class="errorQuantity" style="color: red;"></small></label>
+                                    <input class="form-control" id="quantity" name="quantity" value="1" min="1" max="20" type="number">
                                 </div>
                             </li>
                         </ul>
 
                         <div class="price-box-bar">
                             <div class="cart-and-bay-btn float-right">
-                                <button class="btn hvr-hover" data-fancybox-close="" type="submit" style="color:white;">Add to cart</button>
+                                <button class="btn hvr-hover" data-fancybox-close="" onclick="return submitAddtocart();" type="submit" style="color:white;">Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     </div>

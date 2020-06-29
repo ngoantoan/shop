@@ -23,7 +23,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-lg-6 col-sm-12">
                     <div class="contact-form-right">
-                        <h2>Change Address</h2>
+                        <h2>Thay đổi địa chỉ</h2>
                         <form action="{{url('/change-address')}}" id="contactForm registerForm" method="post">
                             @csrf
                             <div class="row">
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="submit-button text-center">
-                                        <button class="btn hvr-hover" id="submit" type="submit">Change Address</button>
+                                        <button class="btn hvr-hover" id="submit" type="submit">Lưu</button>
                                         <div class="h3 text-center hidden" id="msgSubmit"></div>
                                         <div class="clearfix"></div>
                                     </div>

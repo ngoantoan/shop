@@ -41,8 +41,8 @@
                         @if (empty(Auth::check()))
                             <li><a href="{{url('/login-register')}}"><i class="fa fa-user"></i> Login</a></li>
                         @else
-                            <li><a href="{{url('/account')}}"><i class="fa fa-user"></i> Account</a></li>
-                            <li><a href="{{url('/user-logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
+                            <li><a href="{{url('/account')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
+                            <li><a href="{{url('/user-logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
                         @endif
                     </ul>
                 </div>
@@ -69,9 +69,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url('#')}}">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url('#')}}">Contact Us</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url('#')}}">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url('#')}}">Liên hệ</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

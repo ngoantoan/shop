@@ -42,12 +42,12 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Images</th>
-                                <th>Product Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
-                                <th>Remove</th>
+                                <th>Ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                                <th>Xóa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,7 +64,7 @@
                                         <p>{{$cart->product_code}} | {{$cart->size}}</p>
                                     </td>
                                     <td class="price-pr">
-                                        <p>{{$cart->price}} đ</p>
+                                        <p>{{number_format($cart->price)}} đ</p>
                                     </td>
                                     <td class="quantity-box">
                                         @if ($cart->quantity>1)
@@ -74,7 +74,7 @@
                                         <a href="{{url('/cart/update-quantity/'.$cart->id.'/1')}}" style="font-size: 25px;">+</a>
                                     </td>
                                     <td class="total-pr">
-                                        <p>{{$cart->price * $cart->quantity}} đ</p>
+                                        <p>{{number_format($cart->price * $cart->quantity)}} đ</p>
                                     </td>
                                     <td class="remove-pr">
                                         <a href="{{url('/cart/delete-product/'. $cart->id)}}">
@@ -98,9 +98,9 @@
                     <form action="{{url('/cart/apply-coupon')}}" method="post">
                         @csrf
                         <div class="input-group input-group-sm">
-                            <input class="form-control" name="coupon_code" placeholder="Enter your coupon code" aria-label="Coupon code" type="text">
+                            <input class="form-control" name="coupon_code" placeholder="Nhập mã giảm giá của bạn" aria-label="Coupon code" type="text">
                             <div class="input-group-append">
-                                <button class="btn btn-theme" type="submit">Apply Coupon</button>
+                                <button class="btn btn-theme" type="submit">Áp dụng mã giảm giá</button>
                             </div>
                         </div>
                     </form>
@@ -108,31 +108,31 @@
             </div>
             <div class="col-lg-6 col-sm-6">
                 <div class="order-box">
-                    <h3>Order summary</h3>
+                    <h3>Đơn hàng</h3>
                     @if (!empty(Session::get('couponAmount')))
                         <div class="d-flex">
-                            <h4>Sub Total</h4>
-                            <div class="ml-auto font-weight-bold"> <?php echo $total_amount; ?> đ</div>
+                            <h4>Tổng tiền</h4>
+                            <div class="ml-auto font-weight-bold"> <?php echo number_format($total_amount); ?> đ</div>
                         </div>
                         <hr class="my-1">
                         <div class="d-flex">
-                            <h4>Coupon Discount</h4>
-                            <div class="ml-auto font-weight-bold"> <?php echo Session::get('couponAmount'); ?> đ</div>
+                            <h4>Số tiền giảm</h4>
+                            <div class="ml-auto font-weight-bold"> <?php echo number_format(Session::get('couponAmount')); ?> đ</div>
                         </div>
                         <hr>
                         <div class="d-flex gr-total">
-                            <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> <?php echo $total_amount - Session::get('couponAmount');?> đ</div>
+                            <h5>Thành tiền</h5>
+                            <div class="ml-auto h5"> <?php echo number_format($total_amount - Session::get('couponAmount'));?> đ</div>
                         </div>
                         <hr>
                     @else
                         <div class="d-flex gr-total">
-                            <h5>Grand Total</h5>
-                            <div class="ml-auto h5"> <?php echo $total_amount; ?> đ</div>
+                            <h5>Thành tiền</h5>
+                            <div class="ml-auto h5"> <?php echo number_format($total_amount); ?> đ</div>
                         </div>
                     @endif
                 </div>
-                <div class="col-12 d-flex shopping-box"><a href="{{url('/checkout')}}" class="ml-auto btn hvr-hover">Checkout</a> </div>
+                <div class="col-12 d-flex shopping-box pt-4" style="padding-right:0;"><a href="{{url('/checkout')}}" class="ml-auto btn hvr-hover">Thanh toán</a> </div>
             </div>
         </div>
 

@@ -65,6 +65,7 @@
         $(document).ready(function() {
             // change price
             $("#selSize").change(function() {
+                $(".errorSize").html('');
                 var idSize = $(this).val();
                 if (idSize == "" || idSize == "0") {
                     return false;
@@ -82,6 +83,10 @@
                         alert('Error');
                     }
                 });
+            });
+
+            $("#quantity").change(function() {
+                $(".errorQuantity").html('');
             });
 
             // Shipping Address Same As Billing Address
@@ -111,6 +116,19 @@
                 // alert('checked');
             } else {
                 alert('Please Select Payment Method');
+                return false;
+            }
+        }
+
+        // submit add to cart
+        function submitAddtocart() {
+            if ($("#selSize").val() == 0) {
+                $(".errorSize").html('Vui lòng chọn size');
+                return false;
+            }
+
+            if ($("#quantity").val() == 0) {
+                $(".errorQuantity").html('Vui lòng chọn số lượng');
                 return false;
             }
         }

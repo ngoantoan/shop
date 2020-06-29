@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-12">
                         <div class="contact-form-right">
-                            <h2>Bill To</h2>
+                            <h2>Địa chỉ đặt hàng</h2>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -75,7 +75,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group" style="margin-left: 30px;">
                                         <input type="checkbox" class="form-check-input" id="billtoship">
-                                        <label class="form-check-label" for="billtoship">Shipping Address Same As Billing Address</label>
+                                        <label class="form-check-label" for="billtoship">Địa chỉ nhận hàng giống với địa chỉ đặt hàng</label>
                                     </div>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
 
                     <div class="col-lg-6 col-sm-12">
                         <div class="contact-form-right">
-                            <h2>Ship To</h2>
+                            <h2>Địa chỉ nhận hàng</h2>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -134,7 +134,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="submit-button text-center">
-                                        <button class="btn hvr-hover" type="submit">Checkout</button>
+                                        <button class="btn hvr-hover" type="submit">Thanh toán</button>
                                         <div id="msgSubmit" class="h3 text-center hidden"></div>
                                         <div class="clearfix"></div>
                                     </div>

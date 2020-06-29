@@ -28,8 +28,8 @@
                                     <a href="{{url('/change-password')}}"><i class="fa fa-lock"></i> </a>
                                 </div>
                                 <div class="service-desc">
-                                    <h4>Change Password</h4>
-                                    <p>Change Password</p>
+                                    <h4>Thay đổi mật khẩu</h4>
+                                    <p>Thay đổi mật khẩu</p>
                                 </div>
                             </div>
                         </div>
@@ -41,8 +41,8 @@
                                     <a href="{{url('/orders')}}"> <i class="fa fa-gift"></i> </a>
                                 </div>
                                 <div class="service-desc">
-                                    <h4>Your Orders</h4>
-                                    <p>Track & View Your Orders</p>
+                                    <h4>Đơn hàng của bạn</h4>
+                                    <p>Theo dõi và xem đơn hàng của bạn</p>
                                 </div>
                             </div>
                         </div>
@@ -54,8 +54,8 @@
                                     <a href="{{url('/change-address')}}"> <i class="fa fa-location-arrow"></i> </a>
                                 </div>
                                 <div class="service-desc">
-                                    <h4>Change Address</h4>
-                                    <p>Edit addresses for orders and gifts</p>
+                                    <h4>Thay đổi địa chỉ</h4>
+                                    <p>Chỉnh sửa địa chỉ của bạn</p>
                                 </div>
                             </div>
                         </div>

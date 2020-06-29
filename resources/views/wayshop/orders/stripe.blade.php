@@ -19,13 +19,13 @@
     @endif
     <div class="cart-box-main">
         <div class="container">
-            <h1 align="center">Thanks For Purchasing Us!</h1><br><br>
+            <h1 align="center">Cảm ơn bạn đã mua hàng của chúng tôi!</h1><br><br>
             <div class="row">
                 <div class="col-lg-6">
                     <div align="center">
-                        <h2>YOUR COD ORDER HAS BEEN PLACED</h2>
-                        <P>Your Order Number is {{Session::get('order_id')}} and total payable about is {{Session::get('grand_total')}} đ</P>
-                        <b>Please make payment by entering your credit or debit card</b>
+                        <h2>MÃ ĐƠN HÀNG CỦA BẠN ĐÃ ĐƯỢC TẠO</h2>
+                        <P>Mã đơn hàng của bạn là {{Session::get('order_id')}} và tổng tiền là {{Session::get('grand_total')}} đ</P>
+                        <b>Vui lòng thanh toán bằng cách nhập thẻ tín dụng hoặc thẻ ghi nợ của bạn</b>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -34,16 +34,16 @@
                     <form action="{{url('/stripe')}}" method="post" id="payment-form">
                         @csrf
                         <div class="form-row">
-                            <b>Total Amount</b>
-                            <input type="text" name="total_amount" placeholder="Enter Total Amount" class="form-control">
-                            <b>Your Name</b>
-                            <input type="text" name="name" placeholder="Enter Your Name" class="form-control">
-                            <b>Card Name</b>
+                            <b>Tổng tiền</b>
+                            <input type="text" name="total_amount" placeholder="Nhập tổng tiền" class="form-control">
+                            <b>Họ và tên</b>
+                            <input type="text" name="name" placeholder="Nhập họ và tên" class="form-control">
+                            <b>Mã thẻ</b>
                             <div id="card-element"  class="form-control">
                                 <!-- A Stripe Element will be inserted here. -->
                               </div>
                         </div>
-                        <button class="btn btn-success btn-mini" style="float:right;margin-top:10px;">Submit Payment</button>
+                        <button class="btn btn-success btn-mini" style="float:right;margin-top:10px;">Thanh toán</button>
                     </form>
                     <div class="card-error" role="alert"></div>
                 </div>

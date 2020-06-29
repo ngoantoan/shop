@@ -43,9 +43,13 @@
                 </div>
                 <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
                     <div class="right-product-box">
+                        <div class="product-item-filter row">
+                            <div class="col-12 col-sm-12 text-center text-sm-left">
+                                <h1 align="center">{{$category_name->name}}</h1>
+                            </div>
+                        </div>
                         <div class="row product-categorie-box">
                             <div class="tab-content">
-                                <h1 align="center">{{$category_name->name}}</h1>
 
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
@@ -56,11 +60,10 @@
                                                         <img src="{{asset('uploads/products/'. $product->image)}}" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                                                <li><a href="{{url('/products/'. $product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                             </ul>
-                                                            <a class="cart" href="{{url('/products/'. $product->id)}}">Detai Page</a>
+                                                            <a class="cart" href="{{url('/products/'. $product->id)}}">Chi tiết</a>
                                                         </div>
                                                     </div>
                                                     <div class="why-text">

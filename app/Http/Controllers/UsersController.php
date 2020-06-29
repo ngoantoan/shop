@@ -8,6 +8,7 @@ use App\User;
 use App\Country;
 use Auth;
 use Session;
+use DB;
 
 class UsersController extends Controller
 {
@@ -43,6 +44,10 @@ class UsersController extends Controller
             $data = $request->all();
             if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 Session::put('frontSession', $data['email']);
+                $session_id = Session::get('session_id');
+                if ($session_id) {
+                    DB::table('cart')->where('session_id', $session_id)->update(['user_email' => $data['email']]);
+                }
                 return redirect('/cart');
             } else {
                 return redirect()->back()->with('flash_message_error','Invaild username and password');

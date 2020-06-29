@@ -309,8 +309,8 @@ class ProductsController extends Controller
             $user_email = Auth::user()->email;
             $userCart = DB::table('cart')->where('user_email', $user_email)->get();
         } else {
-            $user_email = Auth::user()->email;
-            $userCart = DB::table('cart')->where('user_email', $user_email)->get();
+            $session_id = Session::get('session_id');
+            $userCart = DB::table('cart')->where('session_id', $session_id)->get();
         }
         foreach ($userCart as $key => $products) {
             $productDetails = Products::where('id', $products->product_id)->first();
@@ -361,9 +361,8 @@ class ProductsController extends Controller
                 if (Auth::check()) {
                     $user_email = Auth::user()->email;
                     $userCart = DB::table('cart')->where('user_email', $user_email)->get();
-                } else {
-                    $user_email = Auth::user()->email;
-                    $userCart = DB::table('cart')->where('user_email', $user_email)->get();
+                } else if ($session_id) {
+                    $userCart = DB::table('cart')->where('session_id', $session_id)->get();
                 }
                 $total_amount = 0;
                 foreach ($userCart as $item) {

@@ -27,7 +27,7 @@ Route::group(['middleware' => ['frontlogin']], function () { // Route for middle
     Route::match(['get', 'post'], '/change-password', 'UsersController@changePassword');
     Route::match(['get', 'post'], '/change-address', 'UsersController@changeAddress');
     // Route Checkout
-    Route::match(['get', 'post'], '/checkout', 'ProductsController@checkout');
+    Route::match(['get', 'post'], '/checkout', 'ProductsController@checkout')->middleware('verified');
     Route::match(['get', 'post'], '/order-review', 'ProductsController@orderReview');
     Route::match(['get', 'post'], '/place-order', 'ProductsController@placeOrder');
     Route::match(['get', 'post'], '/stripe', 'ProductsController@stripe');
@@ -38,7 +38,7 @@ Route::group(['middleware' => ['frontlogin']], function () { // Route for middle
 
 // Route cart
 Route::match(['get', 'post'], '/add-cart', 'ProductsController@addtoCart');
-Route::match(['get', 'post'], '/cart', 'ProductsController@cart')->middleware('verified');
+Route::match(['get', 'post'], '/cart', 'ProductsController@cart');
 Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct');
 Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCartQuantity');
 Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon');

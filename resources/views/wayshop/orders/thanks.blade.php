@@ -2,12 +2,12 @@
 @section('content')
     <div class="cart-box-main">
         <div class="container">
-            <h1 align="center">Thanks For Purchasing Us!</h1><br><br>
+            <h1 align="center">Cảm ơn bạn đã mua hàng của chúng tôi!</h1><br><br>
             <div class="row">
                 <div class="col-md-12">
                     <div align="center">
-                        <h2>YOUR COD ORDER HAS BEEN PLACED</h2>
-                        <P>Your Order Number is {{Session::get('order_id')}} and total payable about is {{Session::get('grand_total')}} đ</P>
+                        <h2>MÃ ĐƠN HÀNG CỦA BẠN ĐÃ ĐƯỢC TẠO</h2>
+                        <P>Mã đơn hàng của bạn là {{Session::get('order_id')}} và tổng tiền là {{Session::get('grand_total')}} đ</P>
                     </div>
                 </div>
             </div>

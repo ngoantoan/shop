@@ -21,3 +21,7 @@
 .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
 }
+
+.list-group-item-action a:hover {
+    color: #d33b33;
+}

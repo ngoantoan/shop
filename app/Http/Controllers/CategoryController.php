@@ -18,7 +18,7 @@ class CategoryController extends Controller
             $category->url = $data['category_url'];
             $category->description = $data['category_description'];
             $category->save();
-            return redirect('/admin/add-category')->with('flash_message_success','Category Added Successfully!!');
+            return redirect('/admin/add-category')->with('flash_message_success','Thêm danh mục sản phẩm thành công!');
         }
         $levels = Category::where(['parent_id' => 0])->get();
         return view('admin.category.add_category')->with(compact('levels'));
@@ -40,7 +40,7 @@ class CategoryController extends Controller
                 'url'           => $data['category_url'],
                 'description'   => $data['category_description']
             ]);
-            return redirect('/admin/view-categories')->with('flash_message_success', 'Category Updated Successfully');
+            return redirect('/admin/view-categories')->with('flash_message_success', 'Câp nhật danh mục sản phẩm thành công!');
         }
         $levels = Category::where(['parent_id' => 0])->get();
         $categoryDetails = Category::where(['id' => $id])->first();

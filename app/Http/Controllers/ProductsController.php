@@ -54,7 +54,7 @@ class ProductsController extends Controller
                 }
             }
             $product->save();
-            return redirect('/admin/view-products')->with('flash_message_success', 'Product has been added successfully!!');
+            return redirect('/admin/view-products')->with('flash_message_success', 'Thêm sản phẩm thành công!');
         }
         // Categories Dropdown menu Code
         $categories = Category::where(['parent_id' => 0])->get();
@@ -108,7 +108,7 @@ class ProductsController extends Controller
                 'price'         => $data['product_price'],
                 'image'         => $filename
             ]);
-            return redirect('/admin/view-products')->with('flash_message_success', 'Product has been updated!!');
+            return redirect('/admin/view-products')->with('flash_message_success', 'Cập nhật sản phẩm thành công!');
         }
         $productDetails = Products::where(['id' => $id])->first();
 
@@ -141,7 +141,7 @@ class ProductsController extends Controller
     {
         Products::where(['id' => $id])->delete();
         Alert::success('Deleted Successfully', 'Success Message');
-        return redirect()->back()->with('flash_message_error', 'Product Deleted');
+        return redirect()->back()->with('flash_message_error', 'Xóa sản phẩm thành công');
     }
 
     public function updateStatus(Request $request, $id = null)
@@ -182,12 +182,12 @@ class ProductsController extends Controller
                     // Prevent duplicate SKU Record
                     $attrCountSKU = ProductsAttributes::where('sku', $val)->count();
                     if ($attrCountSKU > 0) {
-                        return redirect('/admin/add-attributes/'. $id)->with('flash_message_error', 'SKU is already exist please another sku');
+                        return redirect('/admin/add-attributes/'. $id)->with('flash_message_error', 'SKU đã tồn tại, vui lòng chon SKU khác!');
                     }
                     // Prevent duplicate Size Record
                     $attrCountSizes = ProductsAttributes::where(['product_id' => $id, 'size' => $data['size'][$key]])->count();
                     if ($attrCountSizes > 0) {
-                        return redirect('/admin/add-attributes/'. $id)->with('flash_message_error', ''.$data['size'][$key].' Size is already exist please another size');
+                        return redirect('/admin/add-attributes/'. $id)->with('flash_message_error', ''.$data['size'][$key].' Size đã tồn tại vui lòng chọn size khác!');
                     }
 
                     $attribute = new ProductsAttributes;
@@ -199,7 +199,7 @@ class ProductsController extends Controller
                     $attribute->save();
                 }
             }
-            return redirect('/admin/add-attributes/'. $id)->with('flash_message_success','Products attributes added successfully!!');
+            return redirect('/admin/add-attributes/'. $id)->with('flash_message_success','Thêm thuộc tính thành công!');
         }
         return view('admin.products.add_attributes')->with(compact('productDetails'));
     }
@@ -216,14 +216,14 @@ class ProductsController extends Controller
                     'stock' => $data['stock'][$key],
                 ]);
             }
-            return redirect()->back()->with('flash_message_success', 'Products Attributes Updated!!!');
+            return redirect()->back()->with('flash_message_success', 'Cập nhật thuộc tính thành công!');
         }
     }
 
     public function deleteAttribute($id = null)
     {
         ProductsAttributes::where(['id' => $id])->delete();
-        return redirect()->back()->with('flash_message_error', 'Product Attributes is deleted!!');
+        return redirect()->back()->with('flash_message_error', 'Xóa thuộc tính thành công!');
     }
 
     public function addImages(Request $request, $id = null)
@@ -244,7 +244,7 @@ class ProductsController extends Controller
                     $image->save();
                 }
             }
-            return redirect('/admin/add-images/'.$id)->with('flash_message_success', 'Image has been updated');
+            return redirect('/admin/add-images/'.$id)->with('flash_message_success', 'Thêm ảnh thành công');
         }
         $productImages = ProductsImages::where(['product_id' => $id])->get();
         return view('admin.products.add_images')->with(compact('productDetails', 'productImages'));
@@ -285,7 +285,7 @@ class ProductsController extends Controller
                                                 'session_id'        => $session_id
                                             ])->count();
         if ($countProducts > 0) {
-            return redirect()->back()->with('flash_message_error','Product already exists in cart');
+            return redirect()->back()->with('flash_message_error','Sản phẩm đã tồn tại trong giỏ hàng');
         } else {
             DB::table('cart')->insert([
                 'product_id'        => $data['product_id'],
@@ -300,7 +300,7 @@ class ProductsController extends Controller
             ]);
         }
 
-        return redirect('/cart')->with('flash_message_success', 'Product has been added in cart');
+        return redirect('/cart')->with('flash_message_success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
 
     public function cart(Request $request)
@@ -324,7 +324,7 @@ class ProductsController extends Controller
         Session::forget('couponAmount');
         Session::forget('CouponCode');
         DB::table('cart')->where('id', $id)->delete();
-        return redirect('/cart')->with('flash_message_error','Product has been deleted!');
+        return redirect('/cart')->with('flash_message_error','Xóa sản phẩm thành công!');
     }
 
     public function updateCartQuantity($id = null, $quantity = null)
@@ -332,7 +332,7 @@ class ProductsController extends Controller
         Session::forget('couponAmount');
         Session::forget('CouponCode');
         DB::table('cart')->where('id', $id)->increment('quantity', $quantity);
-        return redirect('/cart')->with('flash_message_success','Product Quantity has been updated successfully');
+        return redirect('/cart')->with('flash_message_success','Cập nhật số lượng thành công');
     }
 
     public function applyCoupon(Request $request)
@@ -343,18 +343,18 @@ class ProductsController extends Controller
             $data = $request->all();
             $couponCount = Coupons::where('coupon_code', $data['coupon_code'])->count();
             if ($couponCount == 0) {
-                return redirect()->back()->with('flash_message_error','Coupon code does not exists');
+                return redirect()->back()->with('flash_message_error','Mã giảm giá không tồn tại');
             } else {
                 $couponDetails = Coupons::where('coupon_code', $data['coupon_code'])->first();
                 // Coupon code status
                 if ($couponDetails->status == 0) {
-                    return redirect()->back()->with('flash_message_error','Coupon code is not active');
+                    return redirect()->back()->with('flash_message_error','Mã giảm giá đã bị dừng hoạt động');
                 }
                 // check coupon expiry date
                 $expiry_date = $couponDetails->expiry_date;
                 $current_date = date('Y-m-d');
                 if ($expiry_date < $current_date) {
-                    return redirect()->back()->with('flash_message_error','Coupon Code is Expired');
+                    return redirect()->back()->with('flash_message_error','Mã giảm giá đã hết hạn');
                 }
                 // Coupon is ready for discount
                 $session_id = Session::get('session_id');
@@ -377,7 +377,7 @@ class ProductsController extends Controller
                 // Add Coupon code in session
                 Session::put('couponAmount', $couponAmount);
                 Session::put('CouponCode', $data['coupon_code']);
-                return redirect()->back()->with('flash_message_success','Coupon Code is Successfully Applied. You are Availing Discount');
+                return redirect()->back()->with('flash_message_success','Mã phiếu giảm giá được áp dụng thành công');
             }
         }
     }
@@ -543,7 +543,7 @@ class ProductsController extends Controller
                 'description' => $request->input('name'),
                 'source' => $token
             ]);
-            return redirect()->back()->with('flash_message_success','Your Payment Successfully Done!');
+            return redirect()->back()->with('flash_message_success','Thanh toán thành công!');
         }
         return view('wayshop.orders.stripe');
     }
@@ -582,7 +582,7 @@ class ProductsController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->all();
             Orders::where('id', $data['order_id'])->update(['order_status' => $data['order_status']]);
-            return redirect()->back()->with('flash_message_success','Order Status has been updated successfully!');
+            return redirect()->back()->with('flash_message_success','Trạng thái đơn hàng đã được cập nhật thành công!');
         }
     }
 }

@@ -39,7 +39,7 @@ class BannersController extends Controller
                 }
             }
             $banner->save();
-            return redirect('/admin/banners')->with('flash_message_success','Banners has been updated Successfully!!');
+            return redirect('/admin/banners')->with('flash_message_success','Thêm banner thành công!');
         }
         return view('admin.banners.add_banner');
     }
@@ -72,7 +72,7 @@ class BannersController extends Controller
                 'link'          => $data['banner_link'],
                 'image'         => $filename
             ]);
-            return redirect('/admin/banners')->with('flash_message_success', 'Banner has been updated!!');
+            return redirect('/admin/banners')->with('flash_message_success', 'Cập nhật banner thành công!');
         }
         return view('admin.banners.edit_banner')->with(compact('bannerDetails'));
     }
@@ -81,7 +81,7 @@ class BannersController extends Controller
     {
         Banners::where(['id' => $id])->delete();
         Alert::success('Deleted Successfully', 'Success Message');
-        return redirect()->back()->with('flash_message_error', 'Product Deleted');
+        return redirect()->back()->with('flash_message_error', 'Xóa banner thành công');
     }
 
     public function updateStatus(Request $request, $id = null)

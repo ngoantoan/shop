@@ -18,7 +18,7 @@ class CouponsController extends Controller
             $coupon->amount_type   = $data['amount_type'];
             $coupon->expiry_date   = $data['expiry_date'];
             $coupon->save();
-            return redirect('/admin/view-coupons')->with('flash_message_success', 'Coupon has been added successfully!');
+            return redirect('/admin/view-coupons')->with('flash_message_success', 'Thêm mã khuyến mãi thành công!');
         }
         return view('admin.coupons.add_coupon');
     }
@@ -45,7 +45,7 @@ class CouponsController extends Controller
                 'amount_type'   => $data['amount_type'],
                 'expiry_date'   => $data['expiry_date']
             ]);
-            return redirect('/admin/view-coupons')->with('flash_message_success', 'Coupon has been updated successfully!');
+            return redirect('/admin/view-coupons')->with('flash_message_success', 'Cập nhật mã khuyến mãi thành công!');
         }
         $couponDetails = Coupons::find($id);
         return view('admin.coupons.edit_coupon')->with(compact('couponDetails'));

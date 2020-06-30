@@ -39,7 +39,7 @@
                     <ul>
                         <li><a href="{{url('/cart')}}"><i class="fa fa-cart-plus"></i> Cart</a></li>
                         @if (empty(Auth::check()))
-                            <li><a href="{{url('/login-register')}}"><i class="fa fa-user"></i> Login</a></li>
+                            <li><a href="{{url('/login-register')}}"><i class="fa fa-user"></i> Đăng nhập</a></li>
                         @else
                             <li><a href="{{url('/account')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>
                             <li><a href="{{url('/user-logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>

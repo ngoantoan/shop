@@ -15,7 +15,7 @@ class AdminController extends Controller
             if (Auth::attempt(['email' => $data['username'], 'password' => $data['password'], 'admin' => '1'])) {
                 return redirect('admin/dashboard');
             } else {
-                return redirect('/admin')->with('flash_message_error', 'Invalid Username or Password');
+                return redirect('/admin')->with('flash_message_error', 'Username hoặc Password không đúng');
             }
         }
         return view('admin.admin_login');
@@ -29,6 +29,6 @@ class AdminController extends Controller
     public function logout()
     {
         Session::flush();
-        return redirect('/admin')->with('flash_message_success','Loged out successfully!');
+        return redirect('/admin')->with('flash_message_success','Đăng xuất thành công!');
     }
 }

@@ -23,7 +23,7 @@ class UsersController extends Controller
             $data = $request->all();
             $userCount = User::where('email', $data['email'])->count();
             if ($userCount > 0) {
-                return redirect()->back()->with('flash_message_error', 'Email is already exist!');
+                return redirect()->back()->with('flash_message_error', 'Email đã tồn tại!');
             } else {
                 $user = new User;
                 $user->name = $data['name'];
@@ -50,7 +50,7 @@ class UsersController extends Controller
                 }
                 return redirect('/cart');
             } else {
-                return redirect()->back()->with('flash_message_error','Invaild username and password');
+                return redirect()->back()->with('flash_message_error','Username hoặc Password không đúng!');
             }
         }
     }
@@ -75,9 +75,9 @@ class UsersController extends Controller
             if (Hash::check($data['current_password'], $old_pwd->password)) {
                 $new_pwd = bcrypt($data['new_pwd']);
                 User::where('id', Auth::User()->id)->update(['password' => $new_pwd]);
-                return redirect()->back()->with('flash_message_success','Your Password is Change Now!');
+                return redirect()->back()->with('flash_message_success','Mật khẩu của bạn đã được thay đổi!');
             } else {
-                return redirect()->back()->with('flash_message_error','Old Password is Incorrect!');
+                return redirect()->back()->with('flash_message_error','Mật khẩu cũ không đúng!');
             }
         }
         return view('wayshop.users.change_password');
@@ -98,7 +98,7 @@ class UsersController extends Controller
             $user->pincode  = $data['pincode'];
             $user->mobile   = $data['mobile'];
             $user->save();
-            return redirect()->back()->with('flash_message_success','Account Details Has Been Updated');
+            return redirect()->back()->with('flash_message_success','Cập nhật thông tin thành công');
         }
         $countries = Country::get();
         return view('wayshop.users.change_address')->with(compact('countries', 'userDetails'));

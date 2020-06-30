@@ -9,15 +9,15 @@
         <title>CRM Admin Panel</title>
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="{{asset('admin_assets/dist/img/ico/favicon.png')}}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{asset('public/admin_assets/dist/img/ico/favicon.png')}}" type="image/x-icon">
         <!-- Bootstrap -->
-        <link href="{{asset('admin_assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Bootstrap rtl -->
         <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
         <!-- Pe-icon-7-stroke -->
-        <link href="{{asset('admin_assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}" rel="stylesheet" type="text/css"/>
         <!-- style css -->
-        <link href="{{asset('admin_assets/dist/css/stylecrm.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/dist/css/stylecrm.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Theme style rtl -->
         <!--<link href="assets/dist/css/stylecrm-rtl.css" rel="stylesheet" type="text/css"/>-->
     </head>
@@ -80,9 +80,9 @@
         </div>
         <!-- /.content-wrapper -->
         <!-- jQuery -->
-        <script src="{{asset('admin_assets/plugins/jQuery/jquery-1.12.4.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/jQuery/jquery-1.12.4.min.js')}}" type="text/javascript"></script>
         <!-- bootstrap js -->
-        <script src="{{asset('admin_assets/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
     </body>
 
 </html>

@@ -112,7 +112,7 @@
                             @foreach ($userCart as $cart)
                                 <tr>
                                     <td class="thumbnail-img">
-                                        <img class="img-fluid" src="{{asset('uploads/products/'. $cart->image)}}" alt="" />
+                                        <img class="img-fluid" src="{{asset('public/uploads/products/'. $cart->image)}}" alt="" />
                                     </td>
                                     <td class="name-pr">
                                         {{$cart->product_name}}

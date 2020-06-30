@@ -41,7 +41,7 @@
                 <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         @foreach ($productsAltImages as $key => $images)
-                            <div class="carousel-item {{$key==0 ? 'active' : ''}}"> <img class="d-block w-100" src="{{asset('uploads/products/'. $images->image)}}" alt="First slide"> </div>
+                            <div class="carousel-item {{$key==0 ? 'active' : ''}}"> <img class="d-block w-100" src="{{asset('public/uploads/products/'. $images->image)}}" alt="First slide"> </div>
                         @endforeach
                     </div>
                     <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
@@ -55,7 +55,7 @@
                     <ol class="carousel-indicators">
                         @foreach ($productsAltImages as $key => $images)
                             <li data-target="#carousel-example-1" data-slide-to="0" class="{{$key==0 ? 'active' : ''}}">
-                                <img class="d-block w-100 img-fluid" src="{{asset('uploads/products/'. $images->image)}}" alt="" />
+                                <img class="d-block w-100 img-fluid" src="{{asset('public/uploads/products/'. $images->image)}}" alt="" />
                             </li>
                         @endforeach
                     </ol>
@@ -115,7 +115,7 @@
                         <div class="item">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="{{asset('uploads/products/'.$featuredProduct->image)}}" class="img-fluid" alt="Image">
+                                    <img src="{{asset('public/uploads/products/'.$featuredProduct->image)}}" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>

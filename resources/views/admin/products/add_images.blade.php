@@ -94,7 +94,7 @@
                                                 <tr>
                                                     <td>{{$productImage->id}}</td>
                                                     <td>{{$productImage->product_id}}</td>
-                                                    <td><img src="{{url('uploads/products/'.$productImage->image)}}" style="width: 80px;"></td>
+                                                    <td><img src="{{url('public/uploads/products/'.$productImage->image)}}" style="width: 80px;"></td>
                                                     <td class="center">
                                                         <div class="btn-group">
                                                             <a href="{{url('/admin/delete-alt-image/'. $productImage->id)}}" title="Xóa ảnh" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>

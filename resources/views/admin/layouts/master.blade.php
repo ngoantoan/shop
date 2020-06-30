@@ -8,40 +8,40 @@
         <title>@yield('title') - Way Shop</title>
         <meta name="csrf-token" content="{{csrf_token()}}">
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="{{asset('admin_assets/dist/img/ico/favicon.png')}}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{asset('public/admin_assets/dist/img/ico/favicon.png')}}" type="image/x-icon">
         <!-- Start Global Mandatory Style
             =====================================================================-->
         <!-- jquery-ui css -->
-        <link href="{{asset('admin_assets/plugins/jquery-ui-1.12.1/jquery-ui.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/plugins/jquery-ui-1.12.1/jquery-ui.min.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Bootstrap -->
-        <link href="{{asset('admin_assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Bootstrap rtl -->
         <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
         <!-- Lobipanel css -->
-        <link href="{{asset('admin_assets/plugins/lobipanel/lobipanel.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/plugins/lobipanel/lobipanel.min.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Pace css -->
-        <link href="{{asset('admin_assets/plugins/pace/flash.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/plugins/pace/flash.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Font Awesome -->
-        <link href="{{asset('admin_assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Pe-icon -->
-        <link href="{{asset('admin_assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Themify icons -->
-        <link href="{{asset('admin_assets/themify-icons/themify-icons.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/themify-icons/themify-icons.css')}}" rel="stylesheet" type="text/css"/>
         <!-- End Global Mandatory Style
             =====================================================================-->
         <!-- Start page Label Plugins
             =====================================================================-->
         <!-- Emojionearea -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-        <link href="{{asset('admin_assets/plugins/emojionearea/emojionearea.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/plugins/emojionearea/emojionearea.min.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Monthly css -->
-        <link href="{{asset('admin_assets/plugins/monthly/monthly.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/plugins/monthly/monthly.css')}}" rel="stylesheet" type="text/css"/>
         <!-- End page Label Plugins
             =====================================================================-->
         <!-- Start Theme Layout Style
             =====================================================================-->
         <!-- Theme style -->
-        <link href="{{asset('admin_assets/dist/css/stylecrm.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('public/admin_assets/dist/css/stylecrm.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Theme style rtl -->
         <!--<link href="assets/dist/css/stylecrm-rtl.css" rel="stylesheet" type="text/css"/>-->
         <!-- End Theme Layout Style
@@ -70,7 +70,7 @@
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- jquery-ui -->
-        <script src="{{asset('admin_assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js')}}" type="text/javascript"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script>
         $( function() {
@@ -81,34 +81,34 @@
         } );
         </script>
         <!-- Bootstrap -->
-        <script src="{{asset('admin_assets/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <!-- lobipanel -->
-        <script src="{{asset('admin_assets/plugins/lobipanel/lobipanel.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/lobipanel/lobipanel.min.js')}}" type="text/javascript"></script>
         <!-- Pace js -->
-        <script src="{{asset('admin_assets/plugins/pace/pace.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/pace/pace.min.js')}}" type="text/javascript"></script>
         <!-- SlimScroll -->
-        <script src="{{asset('admin_assets/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript">    </script>
+        <script src="{{asset('public/admin_assets/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript">    </script>
         <!-- FastClick -->
-        <script src="{{asset('admin_assets/plugins/fastclick/fastclick.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/fastclick/fastclick.min.js')}}" type="text/javascript"></script>
         <!-- CRMadmin frame -->
-        <script src="{{asset('admin_assets/dist/js/custom.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/dist/js/custom.js')}}" type="text/javascript"></script>
         <!-- End Core Plugins
             =====================================================================-->
         <!-- Start Page Lavel Plugins
             =====================================================================-->
         <!-- ChartJs JavaScript -->
-        <script src="{{asset('admin_assets/plugins/chartJs/Chart.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/chartJs/Chart.min.js')}}" type="text/javascript"></script>
         <!-- Counter js -->
-        <script src="{{asset('admin_assets/plugins/counterup/waypoints.js')}}" type="text/javascript"></script>
-        <script src="{{asset('admin_assets/plugins/counterup/jquery.counterup.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/counterup/waypoints.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/counterup/jquery.counterup.min.js')}}" type="text/javascript"></script>
         <!-- Monthly js -->
-        <script src="{{asset('admin_assets/plugins/monthly/monthly.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/plugins/monthly/monthly.js')}}" type="text/javascript"></script>
         <!-- End Page Lavel Plugins
             =====================================================================-->
         <!-- Start Theme label Script
             =====================================================================-->
         <!-- Dashboard js -->
-        <script src="{{asset('admin_assets/dist/js/dashboard.js')}}" type="text/javascript"></script>
+        <script src="{{asset('public/admin_assets/dist/js/dashboard.js')}}" type="text/javascript"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
         <script>
             $(document).ready( function () {

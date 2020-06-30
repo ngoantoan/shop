@@ -74,7 +74,7 @@
                                         <td>{{$banner->sort_order}}</td>
                                         <td>
                                             @if (!empty($banner->image))
-                                                <img src="{{asset('/uploads/banners/'.$banner->image)}}" alt="" style="width: 150px;">
+                                                <img src="{{asset('public//uploads/banners/'.$banner->image)}}" alt="" style="width: 150px;">
                                             @endif
                                         </td>
                                         <td>

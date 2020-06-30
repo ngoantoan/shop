@@ -80,7 +80,7 @@
                                         <td>{{$product->color}}</td>
                                         <td>
                                             @if (!empty($product->image))
-                                                <img src="{{asset('/uploads/products/'.$product->image)}}" alt="" style="width: 50px;">
+                                                <img src="{{asset('public//uploads/products/'.$product->image)}}" alt="" style="width: 50px;">
                                             @endif
                                         </td>
                                         <td>{{$product->price}}</td>

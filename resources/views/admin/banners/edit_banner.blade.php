@@ -68,7 +68,7 @@
                                 <input type="file" name="image">
                                 <input type="hidden" name="current_image" value="{{$bannerDetails->image}}">
                                 @if (!empty($bannerDetails->image))
-                                    <img src="{{asset('/uploads/banners/'. $bannerDetails->image)}}" alt="" style="width: 250px;margin-top: 10px;">
+                                    <img src="{{asset('public//uploads/banners/'. $bannerDetails->image)}}" alt="" style="width: 250px;margin-top: 10px;">
                                 @endif
                             </div>
                             <div class="reset-button">

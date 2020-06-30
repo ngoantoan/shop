@@ -16,17 +16,17 @@
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{{asset('front_assets/images/favicon.ico')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('public/front_assets/images/favicon.ico')}}" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('front_assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/front_assets/css/bootstrap.min.css')}}">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="{{asset('front_assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('public/front_assets/css/style.css')}}">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="{{asset('front_assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('public/front_assets/css/responsive.css')}}">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{asset('front_assets/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('public/front_assets/css/custom.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--[if lt IE 9]>
@@ -45,22 +45,22 @@
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
-    <script src="{{asset('front_assets/js/jquery-3.2.1.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/jquery-ui.js')}}"></script>
-    <script src="{{asset('front_assets/js/popper.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/jquery-ui.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/bootstrap.min.js')}}"></script>
     <!-- ALL PLUGINS -->
-    <script src="{{asset('front_assets/js/jquery.superslides.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/bootstrap-select.js')}}"></script>
-    <script src="{{asset('front_assets/js/inewsticker.js')}}"></script>
-    <script src="{{asset('front_assets/js/bootsnav.js')}}"></script>
-    <script src="{{asset('front_assets/js/images-loded.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/isotope.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/baguetteBox.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/form-validator.min.js')}}"></script>
-    <script src="{{asset('front_assets/js/contact-form-script.js')}}"></script>
-    <script src="{{asset('front_assets/js/custom.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/jquery.superslides.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/bootstrap-select.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/inewsticker.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/bootsnav.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/images-loded.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/isotope.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/baguetteBox.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/form-validator.min.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/contact-form-script.js')}}"></script>
+    <script src="{{asset('public/front_assets/js/custom.js')}}"></script>
     <script>
         $(document).ready(function() {
             // change price

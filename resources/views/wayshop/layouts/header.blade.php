@@ -37,7 +37,6 @@
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="our-link">
                     <ul>
-                        <li><a href="{{url('/cart')}}"><i class="fa fa-cart-plus"></i> Cart</a></li>
                         @if (empty(Auth::check()))
                             <li><a href="{{url('/login-register')}}"><i class="fa fa-user"></i> Đăng nhập</a></li>
                         @else
@@ -80,10 +79,16 @@
             <div class="attr-nav">
                 <ul>
                     <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li class="side-menu"><a href="#">
-                    <i class="fa fa-shopping-bag"></i>
-                        <span class="badge">3</span>
-                </a></li>
+                    <li class="side-menu">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-shopping-bag"></i>
+                            <span class="badge">
+                                @if (Session::get('countCart'))
+                                    {{Session::get('countCart')}}
+                                @endif
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- End Atribute Navigation -->
@@ -93,24 +98,26 @@
             <a href="#" class="close-side"><i class="fa fa-times"></i></a>
             <li class="cart-box">
                 <ul class="cart-list">
-                    <li>
-                        <a href="#" class="photo"><img src="{{asset('public/front_assets/images/img-pro-01.jpg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Delica omtantur </a></h6>
-                        <p>1x - <span class="price">$80.00</span></p>
-                    </li>
-                    <li>
-                        <a href="#" class="photo"><img src="{{asset('public/front_assets/images/img-pro-02.jpg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Omnes ocurreret</a></h6>
-                        <p>1x - <span class="price">$60.00</span></p>
-                    </li>
-                    <li>
-                        <a href="#" class="photo"><img src="{{asset('public/front_assets/images/img-pro-03.jpg')}}" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Agam facilisis</a></h6>
-                        <p>1x - <span class="price">$40.00</span></p>
-                    </li>
+                    <?php
+                        $total = 0;
+                        if (Session::get('userCart')) {
+                            $carts = Session::get('userCart');
+                            foreach ($carts as $cart) {
+                                $total += ($cart->price * $cart->quantity);
+                                ?>
+                                    <li>
+                                        <a href="#" class="photo"><img src="{{asset('public/uploads/products/'. $cart->image)}}" class="cart-thumb" alt="" /></a>
+                                        <h6><a href="{{url('/products/'. $cart->product_id)}}">{{$cart->product_name}} </a></h6>
+                                        <p>{{$cart->quantity}} - <span class="price">{{number_format($cart->price)}} đ</span></p>
+                                    </li>
+                                <?php
+                            }
+                        }
+                    ?>
+
                     <li class="total">
-                        <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                        <span class="float-right"><strong>Total</strong>: $180.00</span>
+                        <a href="{{url('/cart')}}" class="btn btn-default hvr-hover btn-cart">Giỏ hàng</a>
+                        <span class="float-right"><strong>Tổng</strong>: <small id="totalHeader">{{number_format($total)}}</small> đ</span>
                     </li>
                 </ul>
             </li>

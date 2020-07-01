@@ -39,7 +39,7 @@
                                 @foreach ($categories as $category)
                                     <div class="list-group-collapse sub-men">
                                         <div class="list-group-item list-group-item-action" href="#sub{{$category->id}}" data-toggle="collapse" aria-expanded="true" aria-controls="sub{{$category->id}}">
-                                            <a href="{{url('/categories/'.$category->id)}}">{{$category->name}}</a> <small class="text-muted">(100)</small>
+                                            <a href="{{url('/categories/'.$category->id)}}">{{$category->name}}</a> <small class="text-muted">({{count($category->categories)}})</small>
                                         </div>
                                         <div class="collapse" id="sub{{$category->id}}" data-parent="#list-group-men">
                                             <div class="list-group">

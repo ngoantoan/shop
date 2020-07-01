@@ -285,7 +285,7 @@ class ProductsController extends Controller
                                                 'session_id'        => $session_id
                                             ])->count();
         if ($countProducts > 0) {
-            return redirect()->back()->with('flash_message_error','Sản phẩm đã tồn tại trong giỏ hàng');
+            return 0;
         } else {
             DB::table('cart')->insert([
                 'product_id'        => $data['product_id'],
@@ -298,19 +298,32 @@ class ProductsController extends Controller
                 'user_email'        => $data['user_email'],
                 'session_id'        => $session_id
             ]);
+            // lấy số lượng sản phẩm có trong giỏ hàng
+            $countCart = DB::table('cart')->where(['session_id' => $session_id])->count();
+            Session::put('countCart', $countCart);
+            // tạo session hiển thị giỏ hàng trên header
+            $userCart = DB::table('cart')->where('session_id', $session_id)->orderBy('id', 'desc')->get();
+            foreach ($userCart as $key => $products) {
+                $productDetails = Products::where('id', $products->product_id)->first();
+                $userCart[$key]->image = $productDetails['image'];
+            }
+            Session::put('userCart', $userCart);
+            $image = Products::select('image')->where('id', $data['product_id'])->first();
+            $response = [];
+            $response['countCart'] = $countCart;
+            $response['image'] = $image;
+            return json_encode($response);
         }
-
-        return redirect('/cart')->with('flash_message_success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
 
     public function cart(Request $request)
     {
         if (Auth::check()) {
             $user_email = Auth::user()->email;
-            $userCart = DB::table('cart')->where('user_email', $user_email)->get();
+            $userCart = DB::table('cart')->where('user_email', $user_email)->orderBy('id', 'desc')->get();
         } else {
             $session_id = Session::get('session_id');
-            $userCart = DB::table('cart')->where('session_id', $session_id)->get();
+            $userCart = DB::table('cart')->where('session_id', $session_id)->orderBy('id', 'desc')->get();
         }
         foreach ($userCart as $key => $products) {
             $productDetails = Products::where('id', $products->product_id)->first();
@@ -324,6 +337,18 @@ class ProductsController extends Controller
         Session::forget('couponAmount');
         Session::forget('CouponCode');
         DB::table('cart')->where('id', $id)->delete();
+        // lấy số lượng sản phẩm có trong giỏ hàng để hiển thị trên icon cart
+        $session_id = Session::get('session_id');
+        $countCart = DB::table('cart')->where(['session_id' => $session_id])->count();
+        Session::put('countCart', $countCart);
+        // cập nhật danh sách sản phẩm để hiển thị trên cart header
+        $session_id = Session::get('session_id');
+        $userCart = DB::table('cart')->where('session_id', $session_id)->orderBy('id', 'desc')->get();
+        foreach ($userCart as $key => $products) {
+            $productDetails = Products::where('id', $products->product_id)->first();
+            $userCart[$key]->image = $productDetails['image'];
+        }
+        Session::put('userCart', $userCart);
         return redirect('/cart')->with('flash_message_error','Xóa sản phẩm thành công!');
     }
 
@@ -332,6 +357,14 @@ class ProductsController extends Controller
         Session::forget('couponAmount');
         Session::forget('CouponCode');
         DB::table('cart')->where('id', $id)->increment('quantity', $quantity);
+        // cập nhật danh sách sản phẩm để hiển thị trên cart header
+        $session_id = Session::get('session_id');
+        $userCart = DB::table('cart')->where('session_id', $session_id)->orderBy('id', 'desc')->get();
+        foreach ($userCart as $key => $products) {
+            $productDetails = Products::where('id', $products->product_id)->first();
+            $userCart[$key]->image = $productDetails['image'];
+        }
+        Session::put('userCart', $userCart);
         return redirect('/cart')->with('flash_message_success','Cập nhật số lượng thành công');
     }
 
@@ -489,7 +522,7 @@ class ProductsController extends Controller
             $order->coupon_amount   = $coupon_amount;
             $order->order_status    = 'New';
             $order->payment_method  = $data['payment_method'];
-            $order->grand_total     = $data['grand_total'];
+            $order->grand_total     = str_replace(',','',$data['grand_total']);
             $order->save();
 
             $order_id = DB::getPdo()->lastinsertID();
@@ -511,7 +544,7 @@ class ProductsController extends Controller
             }
             Session::put('order_id', $order_id);
             Session::put('grand_total', $data['grand_total']);
-            if ($data['payment_method'] == "COD") {
+            if ($data['payment_method'] == "cod") {
                 return redirect('/thanks');
             } else {
                 return redirect('/stripe');
@@ -525,11 +558,15 @@ class ProductsController extends Controller
         DB::table('cart')->where('user_email', $user_email)->delete();
         Session::forget('couponAmount');
         Session::forget('CouponCode');
+        Session::forget('countCart');
+        Session::forget('userCart');
         return view('wayshop.orders.thanks');
     }
 
     public function stripe(Request $request)
     {
+        Session::forget('countCart');
+        Session::forget('userCart');
         $user_email = Auth::user()->email;
         DB::table('cart')->where('user_email', $user_email)->delete();
         if ($request->isMethod('post')) {

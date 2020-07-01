@@ -62,18 +62,17 @@
                 </div>
             </div>
             <div class="col-xl-7 col-lg-7 col-md-6">
-                <form action="{{url('/add-cart')}}" method="post" name="addCart">
-                    @csrf
+                {{-- <form action="{{url('/add-cart')}}" method="post" name="addCart">
+                    @csrf --}}
                     <div class="single-product-details">
-                        <input type="hidden" name="product_id" value="{{$productDetails->id}}">
-                        <input type="hidden" name="product_name" value="{{$productDetails->name}}">
-                        <input type="hidden" name="product_color" value="{{$productDetails->color}}">
-                        <input type="hidden" name="product_code" value="{{$productDetails->code}}">
-                        <input type="hidden" id="price" name="product_price" value="{{$productDetails->price}}">
-                        <h2>Product Name : {{$productDetails->name}}</h2>
-                        <h5 id="getPrice">Product Price : {{number_format($productDetails->price)}} đ</h5>
-
-                        <h4>Short Description:</h4>
+                        <input type="hidden" id="product_id" name="product_id" value="{{$productDetails->id}}">
+                        <input type="hidden" id="product_name" name="product_name" value="{{$productDetails->name}}">
+                        <input type="hidden" id="product_color" name="product_color" value="{{$productDetails->color}}">
+                        <input type="hidden" id="product_code" name="product_code" value="{{$productDetails->code}}">
+                        <input type="hidden" id="product_price" name="product_price" value="{{$productDetails->price}}">
+                        <h2>{{$productDetails->name}}</h2>
+                        <h5 id="getPrice">Giá : {{number_format($productDetails->price)}} đ</h5>
+                        <h4>Mô tả:</h4>
                         <p>{!! $productDetails->description !!}</p>
                         <ul>
                             <li>
@@ -89,7 +88,7 @@
                             </li>
                             <li>
                                 <div class="form-group quantity-box">
-                                    <label class="control-label">Quantity <small class="errorQuantity" style="color: red;"></small></label>
+                                    <label class="control-label">Số lượng <small class="errorQuantity" style="color: red;"></small></label>
                                     <input class="form-control" id="quantity" name="quantity" value="1" min="1" max="20" type="number">
                                 </div>
                             </li>
@@ -101,14 +100,14 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                {{-- </form> --}}
             </div>
         </div>
 
         <div class="row my-5">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Featured Products</h1>
+                    <h1>Sản phẩm nổi bật</h1>
                 </div>
                 <div class="featured-products-box owl-carousel owl-theme">
                     @foreach ($featuredProducts as $featuredProduct)
@@ -118,11 +117,10 @@
                                     <img src="{{asset('public/uploads/products/'.$featuredProduct->image)}}" class="img-fluid" alt="Image">
                                     <div class="mask-icon">
                                         <ul>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                            <li><a href="{{url('/products/'. $featuredProduct->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                         </ul>
-                                        <a class="cart" href="#">Add to Cart</a>
+                                        <a class="cart" href="{{url('/products/'. $featuredProduct->id)}}">Chi tiết</a>
                                     </div>
                                 </div>
                                 <div class="why-text">

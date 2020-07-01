@@ -184,7 +184,7 @@
                         <label for="credit" class="custom-control-label">Thanh toán khi nhận hàng</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="debit" name="payment_method" value="paypal" class="custom-control-input stripe">
+                        <input type="radio" id="debit" name="payment_method" value="stripe" class="custom-control-input stripe">
                         <label for="debit" class="custom-control-label">Stripe</label>
                     </div>
                     <div class="col-12 d-flex shopping-box">

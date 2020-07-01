@@ -10,10 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+    <title>Shop</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{csrf_token()}}">
 
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{{asset('public/front_assets/images/favicon.ico')}}" type="image/x-icon">
@@ -28,11 +29,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('public/front_assets/css/custom.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -76,8 +72,8 @@
                     data: {idSize: idSize},
                     success: function(resp) {
                         var arr = resp.split('#');
-                        $('#getPrice').html('Product Price : ' + arr[0].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + ' đ');
-                        $('#price').val(arr[0]);
+                        $('#getPrice').html('Giá : ' + formatNumber(arr[0]) + ' đ');
+                        $('#product_price').val(arr[0]);
                     },
                     error: function() {
                         alert('Error');
@@ -115,22 +111,78 @@
             if ($('.stripe').is(':checked') || $('.cod').is(':checked')) {
                 // alert('checked');
             } else {
-                alert('Please Select Payment Method');
+                alert('Vui lòng chọn phương thức thanh toán!');
                 return false;
             }
         }
 
         // submit add to cart
         function submitAddtocart() {
-            if ($("#selSize").val() == 0) {
+            var size = $("#selSize").val();
+            var quantity = $("#quantity").val();
+            if (size == 0) {
                 $(".errorSize").html('Vui lòng chọn size');
                 return false;
             }
 
-            if ($("#quantity").val() == 0) {
+            if (quantity <= 0) {
                 $(".errorQuantity").html('Vui lòng chọn số lượng');
                 return false;
             }
+
+            // ajax add to cart
+            if (size != 0 && quantity != 0) {
+                var product_id      = $('#product_id').val();
+                var product_name    = $('#product_name').val();
+                var product_color   = $('#product_color').val();
+                var product_code    = $('#product_code').val();
+                var product_price   = $('#product_price').val();
+                var product_size   = $('#selSize').val();
+                var total = $('#totalHeader').html();
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'post',
+                    url: '/add-cart',
+                    data: {
+                        product_id: product_id,
+                        product_name: product_name,
+                        product_color: product_color,
+                        product_code: product_code,
+                        product_price: product_price,
+                        size: product_size,
+                        quantity: quantity,
+                    },
+                    success: function(resp) {
+                        var response = JSON.parse(resp);
+                        if (response != 0) {
+                            $('.badge').html(response.countCart);
+                            $('.side').addClass('on');
+                            // thêm sản phẩm vào header cart
+                            var path = '{{asset('public/uploads/products/')}}';
+                            var link = '{{url('/products/')}}' + '/' + product_id;
+                            var product = `<li>
+                                            <a href="#" class="photo"><img src="` + path + '/' + response.image.image +`" class="cart-thumb" alt="" /></a>
+                                            <h6><a href="`+ link +`">` + product_name + `</a></h6>
+                                            <p>` + quantity + ` - <span class="price">` + formatNumber(product_price) + ` đ</span></p>
+                                        </li>`;
+                            var cartHeader = $('.cart-list').html();
+                            $('.cart-list').html(product + cartHeader);
+                            // thay đổi tổng tiền trên header cart
+                            var total = $('#totalHeader').html();
+                            $('#totalHeader').html(formatNumber(parseInt(total.replace(',','')) + (product_price*quantity)))
+                        }
+                    },
+                    error: function() {
+                        alert('Error');
+                    }
+                });
+            }
+        }
+
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
         }
     </script>
 </body>

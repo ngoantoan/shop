@@ -20,24 +20,16 @@ class BannersController extends Controller
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
+            if (empty($data['banner_image'])) {
+                return redirect('/admin/add-banner')->with('flash_message_error','Vui lòng chọn ảnh!');
+            }
             $banner = new Banners;
             $banner->name       = $data['banner_name'];
             $banner->text_style = $data['text_style'];
             $banner->sort_order = $data['sort_order'];
             $banner->content    = $data['banner_content'];
             $banner->link       = $data['banner_link'];
-            // Upload Image
-            if ($request->hasfile('image')) {
-                $image_tmp = Input::file('image');
-                if ($image_tmp->isValid()) {
-                    // Upload Image after Resize
-                    $extension = $image_tmp->getClientOriginalExtension();
-                    $fileName = rand(111,99999).'.'.$extension;
-                    $banner_path = 'uploads/banners/'.$fileName;
-                    Image::make($image_tmp)->save($banner_path);
-                    $banner->image = $fileName;
-                }
-            }
+            $banner->image      = $data['banner_image'];
             $banner->save();
             return redirect('/admin/banners')->with('flash_message_success','Thêm banner thành công!');
         }
@@ -49,20 +41,8 @@ class BannersController extends Controller
         $bannerDetails = Banners::where(['id' => $id])->first();
         if ($request->isMethod('post')) {
             $data = $request->all();
-            // Upload Image
-            if ($request->hasfile('image')) {
-                $img_tmp = Input::file('image');
-                if ($img_tmp->isValid()) {
-                    // image path code
-                    $extension = $img_tmp->getClientOriginalExtension();
-                    $filename = rand(111,99999).'.'.$extension;
-                    $img_path = 'uploads/banners/'.$filename;
-                    Image::make($img_tmp)->save($img_path);
-                }
-            } else if (!empty($data['current_image'])){
-                $filename = $data['current_image'];
-            } else {
-                $filename = '';
+            if (empty($data['banner_image'])) {
+                return redirect('/admin/edit-banner/'. $id)->with('flash_message_error', 'Vui lòng chọn ảnh!');
             }
             Banners::where('id', $id)->update([
                 'name'          => $data['banner_name'],
@@ -70,7 +50,7 @@ class BannersController extends Controller
                 'sort_order'    => $data['sort_order'],
                 'content'       => $data['banner_content'],
                 'link'          => $data['banner_link'],
-                'image'         => $filename
+                'image'         => $data['banner_image']
             ]);
             return redirect('/admin/banners')->with('flash_message_success', 'Cập nhật banner thành công!');
         }

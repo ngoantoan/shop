@@ -87,7 +87,7 @@
                                         </td>
                                         <td>
                                             <a href="{{url('/admin/edit-coupon/' . $coupon->id )}}" type="button" title="Sửa mã khuyến mãi" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="{{url('/admin/delete-coupon/' . $coupon->id )}}" type="button" title="Xóa mã khuyến mãi" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                            <a href="{{url('/admin/delete-coupon/' . $coupon->id )}}" onclick="return (confirm('Bạn có chắt muốn xóa mã này?'))" type="button" title="Xóa mã khuyến mãi" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -48,7 +48,7 @@
                 <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                     <div class="btn-group">
                         <div class="buttonexport" id="buttonlist">
-                            <a class="btn btn-add" href="{{url('/admin/add-banner')}}"> <i class="fa fa-plus"></i> Add Banner
+                            <a class="btn btn-add" href="{{url('/admin/add-banner')}}"> <i class="fa fa-plus"></i> Thêm Banner
                             </a>
                         </div>
 
@@ -70,11 +70,11 @@
                                 @foreach ($banners as $banner)
                                     <tr>
                                         <td>{{$banner->id}}</td>
-                                        <td>{{$banner->name}}</td>
+                                        <td>{!!$banner->name!!}</td>
                                         <td>{{$banner->sort_order}}</td>
                                         <td>
                                             @if (!empty($banner->image))
-                                                <img src="{{asset('public//uploads/banners/'.$banner->image)}}" alt="" style="width: 150px;">
+                                                <img src="{{$banner->image}}" alt="{{$banner->name}}" style="width: 150px;">
                                             @endif
                                         </td>
                                         <td>
@@ -83,8 +83,8 @@
                                             <div id="myElen" style="display:none;" class="alert alert-success">Status Enabled</div>
                                         </td>
                                         <td>
-                                            <a href="{{url('/admin/edit-banner/' . $banner->id )}}" type="button" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="{{url('/admin/delete-banner/' . $banner->id )}}" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                            <a href="{{url('/admin/edit-banner/' . $banner->id )}}" type="button" title="Sửa banner" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
+                                            <a href="{{url('/admin/delete-banner/' . $banner->id )}}" type="button" onclick="return(confirm('Bạn có chắt muốn xóa banner này?'))" title="Xóa banner" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach

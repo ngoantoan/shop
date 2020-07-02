@@ -22,37 +22,26 @@ use Auth;
 
 class ProductsController extends Controller
 {
+// Backend
     public function addProduct(Request $request)
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
+            if (empty($data['product_image'])) {
+                return redirect('/admin/add-product')->with('flash_message_error', 'Vui lòng chọn ảnh!');
+            }
             $product = new Products;
             $product->category_id = $data['category_id'];
             $product->name = $data['product_name'];
             $product->code = $data['product_code'];
             $product->color = $data['product_color'];
-            if (!empty($data['product_description'])) {
-                $product->description = $data['product_description'];
-            } else {
+            if (empty($data['product_description'])) {
                 $product->description = '';
+            } else {
+                $product->description = $data['product_description'];
             }
             $product->price = $data['product_price'];
-
-            // Upload image
-            if ($request->hasfile('image')) {
-                echo $img_tmp = Input::file('image');
-                if ($img_tmp->isValid()) {
-                    // image path code
-                    $extension = $img_tmp->getClientOriginalExtension();
-                    $filename = rand(111,99999).'.'.$extension;
-                    $img_path = 'uploads/products/'.$filename;
-
-                    // Image resize
-                    Image::make($img_tmp)->resize(500,500)->save($img_path);
-
-                    $product->image = $filename;
-                }
-            }
+            $product->image = $data['product_image'];
             $product->save();
             return redirect('/admin/view-products')->with('flash_message_success', 'Thêm sản phẩm thành công!');
         }
@@ -79,23 +68,9 @@ class ProductsController extends Controller
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
-            if ($request->hasfile('image')) {
-                $img_tmp = Input::file('image');
-                if ($img_tmp->isValid()) {
-                    // image path code
-                    $extension = $img_tmp->getClientOriginalExtension();
-                    $filename = rand(111,99999).'.'.$extension;
-                    $img_path = 'uploads/products/'.$filename;
-
-                    // Image resize
-                    Image::make($img_tmp)->resize(500,500)->save($img_path);
-                }
-            } else if (!empty($data['current_image'])){
-                $filename = $data['current_image'];
-            } else {
-                $filename = '';
+            if (empty($data['product_image'])) {
+                return redirect('/admin/edit-product/'.$id)->with('flash_message_error', 'Vui lòng chọn ảnh!');
             }
-
             if (empty($data['product_description'])) {
                 $data['product_description'] = '';
             }
@@ -106,12 +81,12 @@ class ProductsController extends Controller
                 'color'         => $data['product_color'],
                 'description'   => $data['product_description'],
                 'price'         => $data['product_price'],
-                'image'         => $filename
+                'image'         => $data['product_image']
             ]);
             return redirect('/admin/view-products')->with('flash_message_success', 'Cập nhật sản phẩm thành công!');
         }
-        $productDetails = Products::where(['id' => $id])->first();
 
+        $productDetails = Products::where(['id' => $id])->first();
         // Category dropdown code
         $categories = Category::where(['parent_id' => 0])->get();
         $categories_dropdown = "<option value='' selected disabled>Select</option>";
@@ -126,12 +101,12 @@ class ProductsController extends Controller
             // code for sub categories
             $sub_categories = Category::where(['parent_id' => $cat->id])->get();
             foreach ($sub_categories as $sub_cat) {
-                if ($cat->id == $productDetails->category_id) {
+                if ($sub_cat->id == $productDetails->category_id) {
                     $selected = "selected";
                 } else {
                     $selected = "";
                 }
-                $categories_dropdown .= "<option value='".$sub_cat->id."'>&nbsp;--&nbsp".$sub_cat->name."</option>";
+                $categories_dropdown .= "<option value='".$sub_cat->id."'".$selected.">&nbsp;--&nbsp".$sub_cat->name."</option>";
             }
         }
         return view('admin.products.edit_product')->with(compact('productDetails', 'categories_dropdown'));
@@ -139,7 +114,9 @@ class ProductsController extends Controller
 
     public function deleteProduct($id = null)
     {
-        Products::where(['id' => $id])->delete();
+        Products::where('id', $id)->delete();
+        ProductsImages::where('product_id', $id)->delete();
+        ProductsAttributes::where('product_id', $id)->delete();
         Alert::success('Deleted Successfully', 'Success Message');
         return redirect()->back()->with('flash_message_error', 'Xóa sản phẩm thành công');
     }
@@ -154,22 +131,6 @@ class ProductsController extends Controller
     {
         $data = $request->all();
         Products::where('id', $data['id'])->update(['featured_products' => $data['featured_products']]);
-    }
-
-    public function products($id = null)
-    {
-        $productDetails = Products::with('attributes')->where('id', $id)->first();
-        $productsAltImages = ProductsImages::where('product_id', $id)->get();
-        $featuredProducts = Products::where('featured_products', 1)->get();
-        return view('wayshop.products.product_detail')->with(compact('productDetails', 'productsAltImages', 'featuredProducts'));
-    }
-
-    public function getPrice(Request $request)
-    {
-        $data = $request->all();
-        $proAttr = explode("-", $data['idSize']);
-        $proAttr = ProductsAttributes::where(['product_id' => $proAttr[0], 'size' => $proAttr[1]])->first();
-        return $proAttr->price;
     }
 
     public function addAttributes(Request $request, $id = null)
@@ -231,20 +192,14 @@ class ProductsController extends Controller
         $productDetails = Products::with('attributes')->where(['id' => $id])->first();
         if ($request->isMethod('post')) {
             $data = $request->all();
-            if ($request->hasfile('image')) {
-                $files = $request->file('image');
-                foreach($files as $file) {
-                    $image = new ProductsImages;
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = rand(111,99999).'.'.$extension;
-                    $image_path = 'uploads/products/'.$filename;
-                    Image::make($file)->save($image_path);
-                    $image->image = $filename;
-                    $image->product_id = $id;
-                    $image->save();
-                }
+            if (!empty($data['image'])) {
+                $image = new ProductsImages;
+                $image->product_id = $id;
+                $image->image = $data['image'];
+                $image->save();
+                return redirect('/admin/add-images/'.$id)->with('flash_message_success', 'Thêm ảnh thành công');
             }
-            return redirect('/admin/add-images/'.$id)->with('flash_message_success', 'Thêm ảnh thành công');
+            return redirect('/admin/add-images/'.$id)->with('flash_message_error', 'Vui lòng chọn ảnh!');
         }
         $productImages = ProductsImages::where(['product_id' => $id])->get();
         return view('admin.products.add_images')->with(compact('productDetails', 'productImages'));
@@ -260,6 +215,23 @@ class ProductsController extends Controller
         ProductsImages::where(['id' => $id])->delete();
         Alert::success('Deleted','Success Message');
         return redirect()->back();
+    }
+
+// Frontend
+    public function products($id = null)
+    {
+        $productDetails = Products::with('attributes')->where('id', $id)->first();
+        $productsAltImages = ProductsImages::where('product_id', $id)->get();
+        $featuredProducts = Products::where('featured_products', 1)->get();
+        return view('wayshop.products.product_detail')->with(compact('productDetails', 'productsAltImages', 'featuredProducts'));
+    }
+
+    public function getPrice(Request $request)
+    {
+        $data = $request->all();
+        $proAttr = explode("-", $data['idSize']);
+        $proAttr = ProductsAttributes::where(['product_id' => $proAttr[0], 'size' => $proAttr[1]])->first();
+        return $proAttr->price;
     }
 
     public function addtoCart(Request $request)
@@ -429,8 +401,6 @@ class ProductsController extends Controller
             $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();
         }
         // Update cart table with email
-        // $session_id = Session::get('session_id');
-        // DB::table('cart')->where('session_id', $session_id)->update(['user_email' => $user_email]);
         if ($request->isMethod('post')) {
             $data = $request->all();
             // Update Users Details

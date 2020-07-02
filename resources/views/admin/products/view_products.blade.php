@@ -80,7 +80,7 @@
                                         <td>{{$product->color}}</td>
                                         <td>
                                             @if (!empty($product->image))
-                                                <img src="{{asset('public//uploads/products/'.$product->image)}}" alt="" style="width: 50px;">
+                                                <img src="{{$product->image}}" alt="{{$product->name}}" style="width: 50px;">
                                             @endif
                                         </td>
                                         <td>{{$product->price}}</td>
@@ -94,10 +94,10 @@
                                                 data-of="Disabled" data-onstyle="success" data-ofstyle="danger" @if($product->featured_products == "1") checked @endif>
                                         </td>
                                         <td>
-                                            <a href="{{url('/admin/add-images/' . $product->id )}}" type="button" class="btn btn-info btn-sm" title="Add Image"><i class="fa fa-image"></i></a>
-                                            <a href="{{url('/admin/add-attributes/' . $product->id )}}" type="button" class="btn btn-warning btn-sm" title="Add Attributes"><i class="fa fa-list"></i></a>
-                                            <a href="{{url('/admin/edit-product/' . $product->id )}}" type="button" class="btn btn-add btn-sm" title="Edit Product"><i class="fa fa-pencil"></i></a>
-                                            <a href="{{url('/admin/delete-product/' . $product->id )}}" type="button" class="btn btn-danger btn-sm" title="Delete Product"><i class="fa fa-trash-o"></i> </a>
+                                            <a href="{{url('/admin/add-images/' . $product->id )}}" type="button" class="btn btn-info btn-sm" title="Thêm image cho sản phẩm"><i class="fa fa-image"></i></a>
+                                            <a href="{{url('/admin/add-attributes/' . $product->id )}}" type="button" class="btn btn-warning btn-sm" title="Thêm thuộc tính cho sản phẩm"><i class="fa fa-list"></i></a>
+                                            <a href="{{url('/admin/edit-product/' . $product->id )}}" type="button" class="btn btn-add btn-sm" title="Sửa sản phẩm"><i class="fa fa-pencil"></i></a>
+                                            <a href="{{url('/admin/delete-product/' . $product->id )}}" type="button" onclick="return (confirm('Bạn có chất muốn xóa sản phẩm này?'))" class="btn btn-danger btn-sm" title="Xóa sản phẩm"><i class="fa fa-trash-o"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -43,9 +43,13 @@
         <!-- Theme style -->
         <link href="{{asset('public/admin_assets/dist/css/stylecrm.css')}}" rel="stylesheet" type="text/css"/>
         <!-- Theme style rtl -->
-        <!--<link href="assets/dist/css/stylecrm-rtl.css" rel="stylesheet" type="text/css"/>-->
-        <!-- End Theme Layout Style
-            =====================================================================-->
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- jquery-ui -->
+        <script src="{{asset('public/admin_assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js')}}" type="text/javascript"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="{{asset('public/ckeditor/ckeditor.js')}}"></script>
+        <script src="{{asset('public/ckfinder/ckfinder.js')}}"></script>
     </head>
     <body class="hold-transition sidebar-mini">
         <!--preloader-->
@@ -64,21 +68,14 @@
             @include('admin.layouts.footer')
 
         </div>
-        <!-- /.wrapper -->
-        <!-- Start Core Plugins
-            =====================================================================-->
-        <!-- jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- jquery-ui -->
-        <script src="{{asset('public/admin_assets/plugins/jquery-ui-1.12.1/jquery-ui.min.js')}}" type="text/javascript"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
         <script>
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                minDate: 0,
-                dateFormat: 'yy-mm-dd'
-            });
-        } );
+            $( function() {
+                $( "#datepicker" ).datepicker({
+                    minDate: 0,
+                    dateFormat: 'yy-mm-dd'
+                });
+            } );
         </script>
         <!-- Bootstrap -->
         <script src="{{asset('public/admin_assets/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -331,88 +328,26 @@
                     x--; //Decrement field counter
                 });
             });
-        </script>
-        <!-- End Theme label Script
-            =====================================================================-->
-        <script>
-            // function dash() {
-            // // single bar chart
-            // var ctx = document.getElementById("singelBarChart");
-            // var myChart = new Chart(ctx, {
-            // type: 'bar',
-            // data: {
-            // labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
-            // datasets: [
-            // {
-            // label: "My First dataset",
-            // data: [40, 55, 75, 81, 56, 55, 40],
-            // borderColor: "rgba(0, 150, 136, 0.8)",
-            // width: "1",
-            // borderWidth: "0",
-            // backgroundColor: "rgba(0, 150, 136, 0.8)"
-            // }
-            // ]
-            // },
-            // options: {
-            // scales: {
-            // yAxes: [{
-            //     ticks: {
-            //         beginAtZero: true
-            //     }
-            // }]
-            // }
-            // }
-            // });
-            //     //monthly calender
-            //     $('#m_calendar').monthly({
-            //         mode: 'event',
-            //         //jsonUrl: 'events.json',
-            //         //dataType: 'json'
-            //         xmlUrl: 'events.xml'
-            //     });
 
-            // //bar chart
-            // var ctx = document.getElementById("barChart");
-            // var myChart = new Chart(ctx, {
-            // type: 'bar',
-            // data: {
-            // labels: ["January", "February", "March", "April", "May", "June", "July", "august", "september","october", "Nobemver", "December"],
-            // datasets: [
-            // {
-            // label: "My First dataset",
-            // data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56],
-            // borderColor: "rgba(0, 150, 136, 0.8)",
-            // width: "1",
-            // borderWidth: "0",
-            // backgroundColor: "rgba(0, 150, 136, 0.8)"
-            // },
-            // {
-            // label: "My Second dataset",
-            // data: [28, 48, 40, 19, 86, 27, 90, 28, 48, 40, 19, 86],
-            // borderColor: "rgba(51, 51, 51, 0.55)",
-            // width: "1",
-            // borderWidth: "0",
-            // backgroundColor: "rgba(51, 51, 51, 0.55)"
-            // }
-            // ]
-            // },
-            // options: {
-            // scales: {
-            // yAxes: [{
-            //     ticks: {
-            //         beginAtZero: true
-            //     }
-            // }]
-            // }
-            // }
-            // });
-            //     //counter
-            //     $('.count-number').counterUp({
-            //         delay: 10,
-            //         time: 5000
-            //     });
-            // }
-            // dash();
+            function selectFileWithCKFinder( elementId ) {
+                CKFinder.modal( {
+                    chooseFiles: true,
+                    width: 800,
+                    height: 600,
+                    onInit: function( finder ) {
+                        finder.on( 'files:choose', function( evt ) {
+                            var file = evt.data.files.first();
+                            var output = document.getElementById( elementId );
+                            output.value = file.getUrl();
+                        } );
+
+                        finder.on( 'file:choose:resizedImage', function( evt ) {
+                            var output = document.getElementById( elementId );
+                            output.value = evt.data.resizedUrl;
+                        } );
+                    }
+                } );
+            }
         </script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script>

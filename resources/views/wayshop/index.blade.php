@@ -5,7 +5,7 @@
         <ul class="slides-container">
             @foreach ($banners as $banner)
                 <li class="{{$banner->text_style}}">
-                    <img src="{{asset('public/uploads/banners/'.$banner->image)}}" alt="">
+                    <img src="{{$banner->image}}" alt="{!!$banner->name!!}">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -76,7 +76,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                 <div class="products-single fix">
                                                     <div class="box-img-hover">
-                                                        <img src="{{asset('public/uploads/products/'. $product->image)}}" class="img-fluid" alt="Image">
+                                                        <img src="{{$banner->image}}" class="img-fluid" alt="{!!$banner->name!!}">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="{{url('/products/'. $product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>

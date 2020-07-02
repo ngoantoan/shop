@@ -65,10 +65,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Ảnh Banner</label>
-                                <input type="file" name="image">
-                                <input type="hidden" name="current_image" value="{{$bannerDetails->image}}">
+                                <div class="input-group">
+                                    <input type="text" id="banner_image" name="banner_image" class="form-control" value="{{$bannerDetails->image}}" placeholder="Chọn ảnh" aria-describedby="basic-addon2">
+                                    <span class="btn input-group-addon" id="buttonEditImage">Chọn hình</span>
+                                </div>
                                 @if (!empty($bannerDetails->image))
-                                    <img src="{{asset('public//uploads/banners/'. $bannerDetails->image)}}" alt="" style="width: 250px;margin-top: 10px;">
+                                    <img src="{{$bannerDetails->image}}" alt="{{$bannerDetails->name}}" style="width: 250px;margin-top: 10px;">
                                 @endif
                             </div>
                             <div class="reset-button">
@@ -79,6 +81,13 @@
                 </div>
             </div>
         </div>
+        <script>
+            CKEDITOR.replace( 'banner_content' );
+            var buttonEditImage = document.getElementById( 'buttonEditImage' );
+            buttonEditImage.onclick = function() {
+                selectFileWithCKFinder( 'banner_image' );
+            };
+        </script>
     </section>
     <!-- /.content -->
 </div>

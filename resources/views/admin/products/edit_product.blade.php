@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form class="col-sm-6" action="{{url('/admin/edit-product/'. $productDetails->id)}}" method="POST" enctype="multipart/form-data">
+                        <form class="col-sm-8" action="{{url('/admin/edit-product/'. $productDetails->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Danh mục</label>
@@ -71,10 +71,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Ảnh</label>
-                                <input type="file" name="image">
-                                <input type="hidden" name="current_image" value="{{$productDetails->image}}">
+                                <div class="input-group">
+                                    <input type="text" id="product_image" name="product_image" class="form-control" placeholder="Chọn ảnh" value="{{$productDetails->image}}">
+                                    <span class="btn input-group-addon" id="buttonEditImage">Chọn hình</span>
+                                </div>
                                 @if (!empty($productDetails->image))
-                                    <img src="{{asset('public//uploads/products/'. $productDetails->image)}}" alt="" style="width: 100px;margin-top: 10px;">
+                                    <img src="{{$productDetails->image}}" alt="{{$productDetails->name}}" style="width: 100px;margin-top: 10px;">
                                 @endif
                             </div>
                             <div class="reset-button">
@@ -86,6 +88,12 @@
             </div>
         </div>
     </section>
-    <!-- /.content -->
+    <script>
+        CKEDITOR.replace( 'product_description' );
+        var buttonEditImage = document.getElementById( 'buttonEditImage' );
+        buttonEditImage.onclick = function() {
+            selectFileWithCKFinder( 'product_image' );
+        };
+    </script>
 </div>
 @endsection

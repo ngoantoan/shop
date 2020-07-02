@@ -5,7 +5,7 @@
         <ul class="slides-container">
             @foreach ($banners as $banner)
                 <li class="{{$banner->text_style}}">
-                    <img src="{{asset('public/uploads/banners/'.$banner->image)}}" alt="">
+                    <img src="{{$banner->image}}" alt="{!!$banner->name!!}">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">

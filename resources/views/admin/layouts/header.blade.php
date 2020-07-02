@@ -15,16 +15,7 @@
           <span class="sr-only">Toggle navigation</span>
           <span class="pe-7s-angle-left-circle"></span>
        </a>
-       <!-- searchbar-->
-       <a href="#search"><span class="pe-7s-search"></span></a>
-       <div id="search">
-         <button type="button" class="close">×</button>
-         <form>
-           <input type="search" value="" placeholder="Search.." />
-           <button type="submit" class="btn btn-add">Search...</button>
-        </form>
-     </div>
-     <div class="navbar-custom-menu">
+    <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <!-- user -->
             <li class="dropdown dropdown-user">

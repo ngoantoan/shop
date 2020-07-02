@@ -54,7 +54,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh </label>
-                                    <input type="file" name="image[]" id="image" multiple="multiple">
+                                    <div class="input-group">
+                                        <input type="text" id="image" name="image" class="form-control" placeholder="Chọn ảnh" aria-describedby="basic-addon2">
+                                        <span class="btn input-group-addon" id="buttonAddImage">Chọn hình</span>
+                                    </div>
                                 </div>
                                 <div class="reset-button">
                                     <input type="submit" class="btn btn-success" value="Thêm ảnh">
@@ -71,9 +74,7 @@
                     <div class="panel panel-bd lobidrag">
                         <div class="panel-heading">
                             <div class="btn-group" id="buttonexport">
-                                <a href="#">
                                     <h4>Danh sách ảnh</h4>
-                                </a>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -94,7 +95,7 @@
                                                 <tr>
                                                     <td>{{$productImage->id}}</td>
                                                     <td>{{$productImage->product_id}}</td>
-                                                    <td><img src="{{url('public/uploads/products/'.$productImage->image)}}" style="width: 80px;"></td>
+                                                    <td><img src="{{$productImage->image}}" style="width: 80px;"></td>
                                                     <td class="center">
                                                         <div class="btn-group">
                                                             <a href="{{url('/admin/delete-alt-image/'. $productImage->id)}}" title="Xóa ảnh" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
@@ -111,6 +112,11 @@
                 </div>
             </div>
         </section>
-        <!-- /.content -->
+        <script>
+            var buttonAddImage = document.getElementById( 'buttonAddImage' );
+            buttonAddImage.onclick = function() {
+                selectFileWithCKFinder( 'image' );
+            };
+        </script>
 </div>
 @endsection

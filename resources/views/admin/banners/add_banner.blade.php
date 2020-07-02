@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form class="col-sm-6" action="{{url('/admin/add-banner')}}" method="POST"  enctype="multipart/form-data">
+                        <form class="col-sm-8" action="{{url('/admin/add-banner')}}" method="POST"  enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Tên</label>
@@ -65,7 +65,10 @@
                             </div>
                             <div class="form-group">
                                 <label>Ảnh Banner</label>
-                                <input type="file" name="image">
+                                <div class="input-group">
+                                    <input type="text" id="banner_image" name="banner_image" class="form-control" placeholder="Chọn ảnh" aria-describedby="basic-addon2">
+                                    <span class="btn input-group-addon" id="buttonAddImage">Chọn hình</span>
+                                </div>
                             </div>
                             <div class="reset-button">
                                 <input type="submit" class="btn btn-success" value="Thêm banner">
@@ -76,6 +79,12 @@
             </div>
         </div>
     </section>
-    <!-- /.content -->
+    <script>
+        CKEDITOR.replace( 'banner_content' );
+        var buttonAddImage = document.getElementById( 'buttonAddImage' );
+        buttonAddImage.onclick = function() {
+            selectFileWithCKFinder( 'banner_image' );
+        };
+    </script>
 </div>
 @endsection

@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <form class="col-sm-6" action="{{url('/admin/add-product')}}" method="POST" enctype="multipart/form-data">
+                        <form class="col-sm-8" action="{{url('/admin/add-product')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Dạnh mục</label>
@@ -50,19 +50,19 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Tên sản phẩm</label>
+                                <label>Tên</label>
                                 <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="product_name" id="product_name" required>
                             </div>
                             <div class="form-group">
-                                <label>Mã sản phẩm</label>
+                                <label>Mã</label>
                                 <input type="text" class="form-control" placeholder="Nhập mã sản phẩm" name="product_code" id="product_code" required>
                             </div>
                             <div class="form-group">
-                                <label>Màu sản phẩm</label>
+                                <label>Màu</label>
                                 <input type="text" class="form-control" placeholder="Nhập màu sản phẩm" name="product_color" id="product_color" required>
                             </div>
                             <div class="form-group">
-                                <label>Mô tả sản phẩm</label>
+                                <label>Mô tả</label>
                                 <textarea name="product_description" id="product_description" class="form-control"></textarea>
                             </div>
                             <div class="form-group">
@@ -70,8 +70,11 @@
                                 <input type="text" class="form-control" placeholder="Enter Product Price" name="product_price" id="product_price" required>
                             </div>
                             <div class="form-group">
-                                <label>Ảnh sản phẩm</label>
-                                <input type="file" name="image">
+                                <label>Ảnh</label>
+                                <div class="input-group">
+                                    <input type="text" id="product_image" name="product_image" class="form-control" placeholder="Chọn ảnh" aria-describedby="basic-addon2">
+                                    <span class="btn input-group-addon" id="buttonAddImage">Chọn hình</span>
+                                </div>
                             </div>
                             <div class="reset-button">
                                 <input type="submit" class="btn btn-success" value="Thêm sản phẩm">
@@ -82,6 +85,12 @@
             </div>
         </div>
     </section>
-    <!-- /.content -->
+    <script>
+        CKEDITOR.replace( 'product_description' );
+        var buttonAddImage = document.getElementById( 'buttonAddImage' );
+        buttonAddImage.onclick = function() {
+            selectFileWithCKFinder( 'product_image' );
+        };
+    </script>
 </div>
 @endsection

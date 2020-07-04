@@ -106,7 +106,7 @@
                                 $total += ($cart->price * $cart->quantity);
                                 ?>
                                     <li>
-                                        <a href="#" class="photo"><img src="{{asset('public/uploads/products/'. $cart->image)}}" class="cart-thumb" alt="" /></a>
+                                        <a href="#" class="photo"><img src="{{$cart->image}}" class="cart-thumb" alt="Image" /></a>
                                         <h6><a href="{{url('/products/'. $cart->product_id)}}">{{$cart->product_name}} </a></h6>
                                         <p>{{$cart->quantity}} - <span class="price">{{number_format($cart->price)}} đ</span></p>
                                     </li>

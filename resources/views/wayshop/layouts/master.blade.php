@@ -160,10 +160,9 @@
                             $('.badge').html(response.countCart);
                             $('.side').addClass('on');
                             // thêm sản phẩm vào header cart
-                            var path = '{{asset('public/uploads/products/')}}';
                             var link = '{{url('/products/')}}' + '/' + product_id;
                             var product = `<li>
-                                            <a href="#" class="photo"><img src="` + path + '/' + response.image.image +`" class="cart-thumb" alt="" /></a>
+                                            <a href="#" class="photo"><img src="`+response.image.image+`" class="cart-thumb" alt="" /></a>
                                             <h6><a href="`+ link +`">` + product_name + `</a></h6>
                                             <p>` + quantity + ` - <span class="price">` + formatNumber(product_price) + ` đ</span></p>
                                         </li>`;

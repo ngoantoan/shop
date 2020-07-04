@@ -38,8 +38,8 @@
                             <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                                 @foreach ($categories as $category)
                                     <div class="list-group-collapse sub-men">
-                                        <div class="list-group-item list-group-item-action" href="#sub{{$category->id}}" data-toggle="collapse" aria-expanded="true" aria-controls="sub{{$category->id}}">
-                                            <a href="{{url('/categories/'.$category->id)}}">{{$category->name}}</a> <small class="text-muted">({{count($category->categories)}})</small>
+                                        <div class="list-group-item list-group-item-action" href="#sub{{$category->id}}" @if(count($category->categories) > 0) data-toggle="collapse" @endif aria-expanded="true" aria-controls="sub{{$category->id}}">
+                                            <a href="{{url('/categories/'.$category->id)}}">{{$category->name}}</a> <small class="text-muted">@if(count($category->categories) > 0) ({{count($category->categories)}}) @endif</small>
                                         </div>
                                         <div class="collapse" id="sub{{$category->id}}" data-parent="#list-group-men">
                                             <div class="list-group">
@@ -76,7 +76,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                 <div class="products-single fix">
                                                     <div class="box-img-hover">
-                                                        <img src="{{$banner->image}}" class="img-fluid" alt="{!!$banner->name!!}">
+                                                        <img src="{{$product->image}}" class="img-fluid" alt="{{$product->name}}">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="{{url('/products/'. $product->id)}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -86,7 +86,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="why-text">
-                                                        <h4>{{$product->description}}</h4>
+                                                        <h4>{{$product->name}}</h4>
                                                         <h5 style="color:red;">{{number_format($product->price)}} đ</h5>
                                                     </div>
                                                 </div>

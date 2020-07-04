@@ -83,7 +83,7 @@
                                                 <img src="{{$product->image}}" alt="{{$product->name}}" style="width: 50px;">
                                             @endif
                                         </td>
-                                        <td>{{$product->price}}</td>
+                                        <td>{{number_format($product->price)}} đ</td>
                                         <td>
                                             <input type="checkbox" class="ProductStatus btn btn-success" rel="{{$product->id}}" data-toggle="toggle" data-on="Enabled"
                                                 data-of="Disabled" data-onstyle="success" data-ofstyle="danger" @if($product->status == "1") checked @endif>

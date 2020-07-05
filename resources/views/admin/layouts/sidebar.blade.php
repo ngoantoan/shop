@@ -64,6 +64,11 @@
                     <i class="pe-7s-cart"></i><span>Đơn hàng</span>
                 </a>
             </li>
+            <li class="treeview">
+                <a href="{{url('admin/contacts')}}">
+                    <i class="fa fa-commenting"></i><span>Liên hệ</span>
+                </a>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar -->

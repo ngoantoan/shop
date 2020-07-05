@@ -31,6 +31,8 @@
 
     <div id="message_success" style="display:none;" class="alert alert-sm alert-success">Status Enabled</div>
     <div id="message_error" style="display:none;" class="alert alert-sm alert-danger">Status Disabled</div>
+    <div id="message_success_delete_category" style="display:none;" class="alert alert-sm alert-success">Xóa danh mục sản phẩm thành công</div>
+    <div id="message_error_delete_category" style="display:none;" class="alert alert-sm alert-danger">Vui lòng xóa sản phẩm hoặc danh mục con trong danh mục này trước</div>
 
     <!-- Main content -->
     <section class="content">
@@ -80,7 +82,7 @@
                                         </td>
                                         <td>
                                             <a href="{{url('/admin/edit-category/' . $category->id )}}" title="Sửa danh mục" type="button" class="btn btn-add btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <a href="{{url('/admin/delete-category/' . $category->id )}}" title="Xóa danh mục" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
+                                            <a href="#" onclick="deleteCategory({{$category->id}})" title="Xóa danh mục" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach

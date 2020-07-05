@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Products;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
@@ -47,11 +48,22 @@ class CategoryController extends Controller
         return view('admin.category.edit_category')->with(compact('levels', 'categoryDetails'));
     }
 
-    public function deleteCategory($id = null)
+    public function deleteCategory(Request $request)
     {
-        Category::where(['id' => $id])->delete();
-        Alert::Success('Deleted', 'Success Message');
-        return redirect()->back();
+        $data = $request->all();
+        $childCategory = Category::where('parent_id', $data['id'])->count();
+        if ($childCategory > 0) {
+            return 0;
+        } else {
+            $products = Products::where('category_id', $data['id'])->count();
+            if ($products > 0) {
+                return 0;
+            } else {
+                Category::where('id', $data['id'])->delete();
+                return 1;
+            }
+        }
+        return 0;
     }
 
     public function updateStatus(Request $request, $id = null)

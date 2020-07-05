@@ -43,6 +43,9 @@ Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct');
 Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCartQuantity');
 Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon');
 
+// Route contact us
+Route::match(['get', 'post'], 'contact-us', 'ContactController@contact');
+
 Auth::routes(['verify' => true]);
 
 Route::match(['get', 'post'], '/home', 'IndexController@home');
@@ -56,7 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::match(['get', 'post'], '/add-category', 'CategoryController@addCategory');
     Route::match(['get', 'post'], '/view-categories', 'CategoryController@viewCategories');
     Route::match(['get', 'post'], '/edit-category/{id}', 'CategoryController@editCategory');
-    Route::match(['get', 'post'], '/delete-category/{id}', 'CategoryController@deleteCategory');
+    Route::post('/delete-category', 'CategoryController@deleteCategory');
     Route::post('/update-category-status', 'CategoryController@updateStatus');
 
     // Product Route
@@ -92,6 +95,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/orders', 'ProductsController@viewOrders');
     Route::get('/order/{id}', 'ProductsController@viewOrderDetails');
     Route::post('/update-order-status', 'ProductsController@UpdateOrderStatus'); // Uodate Orders Status
+
+    // Contact Us Route
+    Route::get('/contacts', 'ContactController@viewContacts');
+    Route::get('/delete-contact/{id}', 'ContactController@deleteContact');
 });
 
 Route::get('/logout', 'AdminController@logout');

@@ -70,7 +70,7 @@
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Trang chủ</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{url('#')}}">Giới thiệu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url('#')}}">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url('/contact-us')}}">Liên hệ</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -348,6 +348,35 @@
                     }
                 } );
             }
+
+            function deleteCategory(id) {
+                var action = confirm('Bạn có chắt muốn xóa sản phẩm này?');
+                if (action == true) {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'post',
+                        url: '/admin/delete-category',
+                        data: {id: id},
+                        success: function(resp) {
+                            if (resp == 0) {
+                                $("#message_error_delete_category").show();
+                                setTimeout(function() { $("#message_error_delete_category").fadeOut('slow'); }, 5000)
+                            } else {
+                                $("#message_success_delete_category").show();
+                                setTimeout(function() {
+                                    $("#message_success_delete_category").fadeOut('slow');
+                                    location.reload();
+                                }, 3000)
+                            }
+                        },
+                        error: function() {
+                            alert('Error');
+                        }
+                    });
+                }
+            }
         </script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script>

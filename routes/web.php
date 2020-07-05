@@ -15,6 +15,7 @@ Route::match(['get', 'post'], '/', 'IndexController@index');
 Route::get('/categories/{category_id}', 'IndexController@categories');
 Route::get('/products/{id}', 'ProductsController@products');
 Route::get('/get-product-price', 'ProductsController@getPrice');
+Route::get('/about-us', 'AboutController@aboutUs');
 
 // Route User
 Route::get('/login-register', 'UsersController@useLoginRegister');

@@ -5,9 +5,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Contact Us</h2>
+                <h2>LIÊN HỆ</h2>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{url('/')}}">Trang chủ</a></li>
                     <li class="breadcrumb-item active"> Liên hệ </li>
                 </ul>
             </div>

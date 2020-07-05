@@ -19,7 +19,7 @@
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{{asset('public/front_assets/images/favicon.ico')}}" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('public/front_assets/css/bootstrap.min.css')}}">
     <!-- Site CSS -->

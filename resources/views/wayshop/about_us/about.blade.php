@@ -1,4 +1,6 @@
 @extends('wayshop.layouts.master')
+@section('title', 'Giới thiệu')
+@section('gioi-thieu', 'active')
 @section('content')
 <!-- Start All Title Box -->
 <div class="all-title-box">

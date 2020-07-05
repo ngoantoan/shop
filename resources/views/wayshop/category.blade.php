@@ -1,4 +1,6 @@
 @extends('wayshop.layouts.master')
+@section('title', 'Danh sách sản phẩm')
+@section('trang-chu','active')
 @section('content')
     <!-- Start Shop Page  -->
     <div class="shop-box-inner">

@@ -1,4 +1,6 @@
 @extends('wayshop.layouts.master')
+@section('title', 'Danh sách đơn hàng')
+@section('trang-chu','active')
 @section('content')
     <div class="cart-box-main">
         <div class="container">

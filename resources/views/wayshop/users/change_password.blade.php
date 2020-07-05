@@ -1,4 +1,6 @@
 @extends('wayshop.layouts.master')
+@section('title', 'Thay đổi mật khẩu')
+@section('trang-chu','active')
 @section('content')
     <div class="contact-box-main">
         <div class="container">

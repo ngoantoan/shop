@@ -1,4 +1,6 @@
 @extends('wayshop.layouts.master')
+@section('title', $productDetails->name)
+@section('trang-chu','active')
 @section('content')
 <!-- Start All Title Box -->
 <div class="all-title-box">

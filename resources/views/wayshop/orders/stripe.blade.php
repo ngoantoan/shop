@@ -1,4 +1,6 @@
 @extends('wayshop.layouts.master')
+@section('title', 'Thanh toán với stripe')
+@section('trang-chu','active')
 @section('content')
     @if (Session::has('flash_message_error'))
         <div class="alert alert-sm alert-danger alert-block" role="alert">

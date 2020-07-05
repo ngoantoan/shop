@@ -1,4 +1,6 @@
 @extends('wayshop.layouts.master')
+@section('title', 'Trang chủ')
+@section('trang-chu','active')
 @section('content')
     <!-- Start Slider -->
     <div id="slides-shop" class="cover-slides">

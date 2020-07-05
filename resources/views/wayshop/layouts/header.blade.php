@@ -68,9 +68,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="{{url('/')}}">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url('/about-us')}}">Giới thiệu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{url('/contact-us')}}">Liên hệ</a></li>
+                    <li class="nav-item @yield('trang-chu')"><a class="nav-link" href="{{url('/')}}">Trang chủ</a></li>
+                    <li class="nav-item @yield('gioi-thieu')"><a class="nav-link" href="{{url('/about-us')}}">Giới thiệu</a></li>
+                    <li class="nav-item @yield('lien-he')"><a class="nav-link" href="{{url('/contact-us')}}">Liên hệ</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

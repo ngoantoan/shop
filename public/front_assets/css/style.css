@@ -2870,3 +2870,20 @@ ul.cart-list>li.total>.btn:hover {
     vertical-align: middle;
     white-space: nowrap;
 }
+
+.pagination {
+    justify-content: center;
+}
+
+.page-item.active .page-link {
+    background-color: #d33b33;
+    border-color: #d33b33;
+}
+
+.page-link:hover {
+    color: #d33b33;
+}
+
+.page-link {
+    color: #d33b33;
+}

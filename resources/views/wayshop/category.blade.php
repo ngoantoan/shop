@@ -52,7 +52,6 @@
                         </div>
                         <div class="row product-categorie-box">
                             <div class="tab-content">
-
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
                                         @foreach ($products as $product)
@@ -79,6 +78,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        {{$products->links()}}
 
                     </div>
                 </div>

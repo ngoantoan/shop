@@ -74,6 +74,8 @@
                         <input type="hidden" id="product_price" name="product_price" value="{{$productDetails->price}}">
                         <h2>{{$productDetails->name}}</h2>
                         <h5 id="getPrice">Giá : {{number_format($productDetails->price)}} đ</h5>
+                        <h5 style="color: #000;">SKU: {{$productDetails->code}}</h5>
+                        <h5 style="color: #000;">Màu: {{$productDetails->color}}</h5>
                         <h4>Mô tả:</h4>
                         <p>{!! $productDetails->description !!}</p>
                         <ul>

@@ -389,6 +389,13 @@ class ProductsController extends Controller
 
     public function checkout(Request $request)
     {
+        // kiểm tra có tồn tại sản phẩm trong giỏ hàng không
+        $session_id = Session::get('session_id');
+        $carts = DB::table('cart')->where('session_id', $session_id)->count();
+        if ($carts == 0) {
+            return redirect()->back()->with('flash_message_error','Chưa có sản phẩm trong giỏ hàng');
+        }
+
         $user_id = Auth::user()->id;
         $user_email = Auth::user()->email;
         $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();

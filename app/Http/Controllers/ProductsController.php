@@ -391,13 +391,17 @@ class ProductsController extends Controller
     {
         // kiểm tra có tồn tại sản phẩm trong giỏ hàng không
         $session_id = Session::get('session_id');
-        $carts = DB::table('cart')->where('session_id', $session_id)->count();
+        $user_id = Auth::user()->id;
+        $user_email = Auth::user()->email;
+        $carts = DB::table('cart')
+                    ->where('session_id', $session_id)
+                    ->orWhere('user_email', $user_email)
+                    ->count();
         if ($carts == 0) {
             return redirect()->back()->with('flash_message_error','Chưa có sản phẩm trong giỏ hàng');
         }
 
-        $user_id = Auth::user()->id;
-        $user_email = Auth::user()->email;
+
         $shippingDetails = DeliveryAddress::where('user_id', $user_id)->first();
         $userDetails = User::find($user_id);
         $countries = Country::get();
@@ -519,12 +523,21 @@ class ProductsController extends Controller
                 $carPro->product_qty    = $pro->quantity;
                 $carPro->save();
             }
+            // xóa giỏ hàng sau khi đã lưu đơn hàng
+            DB::table('cart')->where('user_email', $user_email)->delete();
+            Session::forget('couponAmount');
+            Session::forget('CouponCode');
+            Session::forget('countCart');
+            Session::forget('userCart');
+
             Session::put('order_id', $order_id);
-            Session::put('grand_total', $data['grand_total']);
+            Session::put('grand_total', str_replace(',','',$data['grand_total']));
             if ($data['payment_method'] == "cod") {
                 return redirect('/thanks');
-            } else {
+            } else if ($data['payment_method'] == "stripe") {
                 return redirect('/stripe');
+            } else {
+                return redirect('/paypal/');
             }
         }
     }
@@ -557,7 +570,14 @@ class ProductsController extends Controller
                 'description' => $request->input('name'),
                 'source' => $token
             ]);
-            return redirect()->back()->with('flash_message_success','Thanh toán thành công!');
+            if ($charge['status'] == 'succeeded') {
+                $order_id = Session::get('order_id');
+                Orders::where('id',$order_id)->update(['payment_status' => 1, 'transaction_id' => $charge['id']]);
+                Session::forget('order_id');
+                Session::forget('grand_total');
+                return redirect('/cart')->with('flash_message_success','Thanh toán thành công!');
+            }
+            return redirect()->back()->with('flash_message_success','Thanh toán thất bại!');
         }
         return view('wayshop.orders.stripe');
     }

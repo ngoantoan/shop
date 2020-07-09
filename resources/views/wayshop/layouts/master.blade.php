@@ -108,7 +108,7 @@
         });
 
         function selectPaymentMethod() {
-            if ($('.stripe').is(':checked') || $('.cod').is(':checked')) {
+            if ($('.stripe').is(':checked') || $('.cod').is(':checked') || $('.paypal').is(':checked')) {
                 // alert('checked');
             } else {
                 alert('Vui lòng chọn phương thức thanh toán!');

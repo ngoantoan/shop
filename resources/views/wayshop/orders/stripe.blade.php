@@ -26,7 +26,7 @@
                 <div class="col-lg-6">
                     <div align="center">
                         <h2>MÃ ĐƠN HÀNG CỦA BẠN ĐÃ ĐƯỢC TẠO</h2>
-                        <P>Mã đơn hàng của bạn là {{Session::get('order_id')}} và tổng tiền là {{Session::get('grand_total')}} đ</P>
+                        <P>Mã đơn hàng của bạn là {{Session::get('order_id')}} và tổng tiền là {{number_format(Session::get('grand_total'))}} đ</P>
                         <b>Vui lòng thanh toán bằng cách nhập thẻ tín dụng hoặc thẻ ghi nợ của bạn</b>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                         @csrf
                         <div class="form-row">
                             <b>Tổng tiền</b>
-                            <input type="text" name="total_amount" placeholder="Nhập tổng tiền" class="form-control">
+                            <input type="text" name="total_amount" value="{{Session::get('grand_total')}}" placeholder="Nhập tổng tiền" class="form-control" readonly>
                             <b>Họ và tên</b>
                             <input type="text" name="name" placeholder="Nhập họ và tên" class="form-control">
                             <b>Mã thẻ</b>
@@ -125,8 +125,3 @@
         }
     </script>
 @endsection
-
-<?php
-    Session::forget('order_id');
-    Session::forget('grand_total');
-?>

@@ -114,7 +114,7 @@
                             @foreach ($userCart as $cart)
                                 <tr>
                                     <td class="thumbnail-img">
-                                        <img class="img-fluid" src="{{asset('public/uploads/products/'. $cart->image)}}" alt="" />
+                                        <img class="img-fluid" src="{{$cart->image}}" alt="" />
                                     </td>
                                     <td class="name-pr">
                                         {{$cart->product_name}}
@@ -184,6 +184,10 @@
                     <div class="custom-control custom-radio">
                         <input type="radio" id="credit" name="payment_method" value="cod" class="custom-control-input cod">
                         <label for="credit" class="custom-control-label">Thanh toán khi nhận hàng</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="paypal" name="payment_method" value="paypal" class="custom-control-input paypal">
+                        <label for="paypal" class="custom-control-label">Paypal</label>
                     </div>
                     <div class="custom-control custom-radio">
                         <input type="radio" id="debit" name="payment_method" value="stripe" class="custom-control-input stripe">

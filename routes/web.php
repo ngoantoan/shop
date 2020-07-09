@@ -17,7 +17,7 @@ Route::get('/products/{id}', 'ProductsController@products');
 Route::get('/get-product-price', 'ProductsController@getPrice');
 Route::get('/about-us', 'AboutController@aboutUs');
 
-// Route User
+// User Route
 Route::get('/login-register', 'UsersController@useLoginRegister');
 Route::post('/user-register', 'UsersController@register');
 Route::post('/user-login', 'UsersController@login');
@@ -27,7 +27,7 @@ Route::group(['middleware' => ['frontlogin']], function () { // Route for middle
     Route::match(['get', 'post'], '/account', 'UsersController@account');
     Route::match(['get', 'post'], '/change-password', 'UsersController@changePassword');
     Route::match(['get', 'post'], '/change-address', 'UsersController@changeAddress');
-    // Route Checkout
+    // Checkout Route
     Route::match(['get', 'post'], '/checkout', 'ProductsController@checkout')->middleware('verified');
     Route::match(['get', 'post'], '/order-review', 'ProductsController@orderReview');
     Route::match(['get', 'post'], '/place-order', 'ProductsController@placeOrder');
@@ -35,16 +35,21 @@ Route::group(['middleware' => ['frontlogin']], function () { // Route for middle
     Route::get('/thanks', 'ProductsController@thanks');
     Route::get('/orders', 'ProductsController@userOrders');
     Route::get('/order/{id}', 'ProductsController@userOrderDetails');
+
+    // Paypal Route
+    Route::get('/paypal', 'PaypalController@paypal')->name('paypal');
+    Route::get('/cancel', 'PaypalController@cancel')->name('paypal.cancel');
+    Route::get('/paypal/success', 'PaypalController@success')->name('paypal.success');
 });
 
-// Route cart
+// Cart Route
 Route::match(['get', 'post'], '/add-cart', 'ProductsController@addtoCart');
 Route::match(['get', 'post'], '/cart', 'ProductsController@cart');
 Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct');
 Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCartQuantity');
 Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon');
 
-// Route contact us
+// Contact us Route
 Route::match(['get', 'post'], 'contact-us', 'ContactController@contact');
 
 Auth::routes(['verify' => true]);

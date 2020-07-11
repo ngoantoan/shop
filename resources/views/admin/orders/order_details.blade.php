@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Order Details')
+@section('title', 'Chi tiết đơn hàng')
 @section('content')
 <div class="content-wrapper">
 
@@ -9,8 +9,8 @@
           <i class="fa fa-eye"></i>
        </div>
        <div class="header-title">
-          <h1>Order Details</h1>
-          <small>Order {{$orderDetails->id}}</small>
+          <h1>Chi tiết đơn hàng</h1>
+          <small>ID: {{$orderDetails->id}}</small>
        </div>
     </section>
     @if (Session::has('flash_message_error'))
@@ -42,7 +42,7 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonexport">
                             <a href="#">
-                                <h4>Order Details</h4>
+                                <h4>Chi tiết đơn hàng</h4>
                             </a>
                         </div>
                     </div>
@@ -53,33 +53,49 @@
                             <table id="table_id" class="table table-bordered table-striped table-hover">
                                 <tbody>
                                     <tr>
-                                        <td class="taskDesc">Order date</td>
+                                        <td class="taskDesc">Ngày đặt hàng</td>
                                         <td class="taskStatus"> {{$orderDetails->created_at->format('d/m/Y')}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Order Status</td>
+                                        <td class="taskDesc">Trạng thái</td>
                                         <td class="taskStatus"> {{$orderDetails->order_status}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Order Total</td>
+                                        <td class="taskDesc">Tổng tiền</td>
                                         <td class="taskStatus"> {{$orderDetails->grand_total}} đ</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Order Charges</td>
+                                        <td class="taskDesc">Phí giao hàng</td>
                                         <td class="taskStatus"> {{$orderDetails->shipping_charges}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Coupon Code</td>
+                                        <td class="taskDesc">Mã khuyến mãi</td>
                                         <td class="taskStatus"> {{$orderDetails->coupon_code}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Coupon Amount</td>
+                                        <td class="taskDesc">Số tiền giảm giá</td>
                                         <td class="taskStatus"> {{$orderDetails->coupon_amount}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Payment Mehtod</td>
+                                        <td class="taskDesc">Phương thức thanh toán</td>
                                         <td class="taskStatus"> {{$orderDetails->payment_method}}</td>
                                     </tr>
+                                    <tr>
+                                        <td class="taskDesc">Trạng thái thanh toán</td>
+                                        <td class="taskStatus">
+                                            @if ($orderDetails->payment_status == 0)
+                                                <span class="label label-danger">Thanh toán thất bại</span>
+                                            @else
+                                                <span class="label label-success">Thanh toán thành công</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @if ($orderDetails->payment_status == 1)
+                                        <tr>
+                                            <td class="taskDesc">Mã thanh toán</td>
+                                            <td class="taskStatus">{{$orderDetails->transaction_id}}</td>
+                                        </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -90,7 +106,7 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonexport">
                             <a href="#">
-                                <h4>Billing Address</h4>
+                                <h4>Địa chỉ thanh toán</h4>
                             </a>
                         </div>
                     </div>
@@ -101,31 +117,31 @@
                             <table id="table_id" class="table table-bordered table-striped table-hover">
                                 <tbody>
                                     <tr>
-                                        <td class="taskDesc">Name</td>
+                                        <td class="taskDesc">Tên</td>
                                         <td class="taskStatus"> {{$orderDetails->name}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Address</td>
+                                        <td class="taskDesc">Địa chỉ</td>
                                         <td class="taskStatus"> {{$orderDetails->address}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">City</td>
+                                        <td class="taskDesc">Thành phố</td>
                                         <td class="taskStatus"> {{$orderDetails->city}} đ</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">District</td>
+                                        <td class="taskDesc">Quận/Huyện</td>
                                         <td class="taskStatus"> {{$orderDetails->district}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Country</td>
+                                        <td class="taskDesc">Quốc gia</td>
                                         <td class="taskStatus"> {{$orderDetails->country}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Country Code</td>
+                                        <td class="taskDesc">Mã quốc gia</td>
                                         <td class="taskStatus"> {{$orderDetails->pincode}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Mobile</td>
+                                        <td class="taskDesc">Số điện thoại</td>
                                         <td class="taskStatus"> {{$orderDetails->mobile}}</td>
                                     </tr>
                                 </tbody>
@@ -139,7 +155,7 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonexport">
                             <a href="#">
-                                <h4>Customer Details</h4>
+                                <h4>Thông tin người dùng</h4>
                             </a>
                         </div>
                     </div>
@@ -150,11 +166,11 @@
                             <table id="table_id" class="table table-bordered table-striped table-hover">
                                 <tbody>
                                     <tr>
-                                        <td class="taskDesc">Customer Name</td>
+                                        <td class="taskDesc">Họ tên</td>
                                         <td class="taskStatus"> {{$orderDetails->name}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Customer Email</td>
+                                        <td class="taskDesc">Email</td>
                                         <td class="taskStatus"> {{$orderDetails->user_email}}</td>
                                     </tr>
                                 </tbody>
@@ -167,7 +183,7 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonexport">
                             <a href="#">
-                                <h4>Shipping Address updated</h4>
+                                <h4>Cập nhật trạng thái đơn hàng</h4>
                             </a>
                         </div>
                     </div>
@@ -179,17 +195,16 @@
                                 <tr>
                                     <td>
                                         <select name="order_status" id="order_status" class="form-control">
-                                            <option value="New" @if ($orderDetails->order_status == "New") selected @endif>New</option>
-                                            <option value="Pending" @if ($orderDetails->order_status == "Pending") selected @endif>Pending</option>
-                                            <option value="In Process" @if ($orderDetails->order_status == "In Process") selected @endif>In Process</option>
-                                            <option value="Shipped" @if ($orderDetails->order_status == "Shipped") selected @endif>Shipped</option>
-                                            <option value="Delivered" @if ($orderDetails->order_status == "Delivered") selected @endif>Delivered</option>
-                                            <option value="Cancelled" @if ($orderDetails->order_status == "Cancelled") selected @endif>Cancelled</option>
-                                            <option value="Paid" @if ($orderDetails->order_status == "Paid") selected @endif>Paid</option>
+                                            <option value="Mới" @if ($orderDetails->order_status == "Mới") selected @endif>Mới</option>
+                                            <option value="Đang chờ xử lý" @if ($orderDetails->order_status == "Đang chờ xử lý") selected @endif>Đang chờ xử lý</option>
+                                            <option value="Đang vận chuyển" @if ($orderDetails->order_status == "Đang vận chuyển") selected @endif>Đang vận chuyển</option>
+                                            <option value="Đã giao hàng" @if ($orderDetails->order_status == "Đã giao hàng") selected @endif>Đã giao hàng</option>
+                                            <option value="Đã hủy" @if ($orderDetails->order_status == "Đã hủy") selected @endif>Đã hủy</option>
+                                            <option value="Đã thanh toán" @if ($orderDetails->order_status == "Đã thanh toán") selected @endif>Đã thanh toán</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="submit" value="Update Status" class="btn btn-sm btn-success">
+                                        <input type="submit" value="Cập nhật trạng thái" class="btn btn-sm btn-success">
                                     </td>
                                 </tr>
                             </table>
@@ -201,7 +216,7 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonexport">
                             <a href="#">
-                                <h4>Shipping Address</h4>
+                                <h4>Địa chỉ giao hàng</h4>
                             </a>
                         </div>
                     </div>
@@ -210,31 +225,31 @@
                             <table id="table_id" class="table table-bordered table-striped table-hover">
                                 <tbody>
                                     <tr>
-                                        <td class="taskDesc">Name</td>
+                                        <td class="taskDesc">Họ tên</td>
                                         <td class="taskStatus"> {{$orderDetails->name}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Address</td>
+                                        <td class="taskDesc">Địa chỉ</td>
                                         <td class="taskStatus"> {{$orderDetails->address}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">City</td>
+                                        <td class="taskDesc">Thành phố</td>
                                         <td class="taskStatus"> {{$orderDetails->city}} đ</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">District</td>
+                                        <td class="taskDesc">Quận/huyện</td>
                                         <td class="taskStatus"> {{$orderDetails->district}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Country</td>
+                                        <td class="taskDesc">Quốc gia</td>
                                         <td class="taskStatus"> {{$orderDetails->country}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Country Code</td>
+                                        <td class="taskDesc">Mã quốc gia</td>
                                         <td class="taskStatus"> {{$orderDetails->pincode}}</td>
                                     </tr>
                                     <tr>
-                                        <td class="taskDesc">Mobile</td>
+                                        <td class="taskDesc">Số điện thoại</td>
                                         <td class="taskStatus"> {{$orderDetails->mobile}}</td>
                                     </tr>
                                 </tbody>
@@ -253,7 +268,7 @@
                     <div class="panel-heading">
                         <div class="btn-group" id="buttonexport">
                             <a href="#">
-                                <h4>Order Products</h4>
+                                <h4>Sản phẩm đã đặt</h4>
                             </a>
                         </div>
                     </div>
@@ -261,12 +276,12 @@
                         <div class="table-responsive">
                             <table id="table_id" class="table table-bordered table-striped table-hover">
                                 <thead>
-                                    <th>Product Code</th>
-                                    <th>Product Name</th>
-                                    <th>Product Size</th>
-                                    <th>Product Color</th>
-                                    <th>Product Price</th>
-                                    <th>Product Qty</th>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Size</th>
+                                    <th>Màu</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($orderDetails->orders as $pro)

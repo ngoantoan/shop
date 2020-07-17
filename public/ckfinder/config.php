@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'ngoantoan.ihostfull.com';
-$config['licenseKey']  = '39J9H577779DY8HK41JPWHTCXP6GG';
+$config['licenseName'] = 'shopway.ezyro.com';
+$config['licenseKey']  = 'T3D3HFYA4F4FK59CLCJGTRSCKR4J4';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir

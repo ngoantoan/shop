@@ -37,7 +37,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="our-link">
                     <ul>
-                        @if (empty(Auth::check()))
+                        @if (empty(Auth::check()) || (Auth::user()->admin == 1))
                             <li><a href="{{url('/login-register')}}"><i class="fa fa-user"></i> Đăng nhập</a></li>
                         @else
                             <li><a href="{{url('/account')}}"><i class="fa fa-user"></i> {{Auth::user()->name}}</a></li>

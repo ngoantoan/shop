@@ -24,11 +24,10 @@
                 <ul class="dropdown-menu" >
                     <li>
                         <a href="profile.html">
-                        <i class="fa fa-user"></i> User Profile</a>
+                        <i class="fa fa-user"></i> {{Auth::user()->name}}</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
                     <li><a href="{{url('/logout')}}">
-                        <i class="fa fa-sign-out"></i> Signout</a>
+                        <i class="fa fa-sign-out"></i> Đăng xuất</a>
                     </li>
                 </ul>
             </li>
